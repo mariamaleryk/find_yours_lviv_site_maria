@@ -23,7 +23,6 @@ const placeQuestions = [
             { id: 4, answer: "Американська" },
             { id: 5, answer: "Грузинська" },
             { id: 6, answer: "Італійська" },
-            // { id: 7, answer: "" },
         ],
     },
     {
@@ -75,6 +74,8 @@ const locationQuestions = [
         ],
     },
 ]
+
+
 document.addEventListener("DOMContentLoaded", () => {
     const quizContainer = document.getElementById("quizContainer");
     const pageType = quizContainer?.dataset.pageType;
@@ -91,10 +92,13 @@ document.addEventListener("DOMContentLoaded", () => {
     const rightArrow = document.querySelector(".right-arrow");
 
     let questions;
+    let apiPath = '';
     if (pageType === "location") {
         questions = locationQuestions;
+        apiPath = 'http://localhost:8080/api/locations/recommendations?';
     } else if (pageType === "place") {
         questions = placeQuestions;
+        apiPath = 'http://localhost:8080/api/places/recommendations?';
     } else {
         console.error("Невідомий тип сторінки.");
         return;
@@ -171,6 +175,12 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     }
 
+    const endBtn = document.getElementById("end");
+
+    endBtn.addEventListener("click", (e) => {
+        generateRequest();
+    })
+
     function generateRequest() {
         const params = {
             types_to_sort: [],
@@ -183,10 +193,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
         questions.forEach((question, index) => {
             const answers = userAnswers[index] || [];
-
-            //вивід для діагностики
-            console.log(`Processing question: ${question.question}`);
-            console.log(`Answers:`, answers);
 
             // Якщо немає відповіді, обираємо всі варіанти
             if (answers.length === 0) {
@@ -235,8 +241,6 @@ document.addEventListener("DOMContentLoaded", () => {
             }
         });
 
-        console.log("Generated params:", params);
-
         const query = Object.entries(params)
             .map(([key, value]) => {
                 if (Array.isArray(value) && value.length > 0) {
@@ -249,23 +253,24 @@ document.addEventListener("DOMContentLoaded", () => {
             .filter(Boolean)
             .join("&");
 
-        const endpoint = `../recommendations?\n${query}`;
-        console.log(endpoint);
+        const URL = apiPath+query;
+        getRecommendations(URL, params);
     }
-    // Обробка подій для кнопок
-    // document.querySelector('.nav-button.end').addEventListener('click', () => {
-    //     // Викликаємо функцію для генерації параметрів
-    //     generateRequest();
-    //
-    //     // Направляємо користувача до сторінки результатів
-    //     window.location.href = '../recommendations'; // Змініть URL на потрібний
-    // });
-    // const endSurveyButton = document.querySelector('.nav-button.end');
-    // if (endSurveyButton) {
-    //     endSurveyButton.addEventListener('click', () => {
-    //         alert('Опитування завершено. Дякуємо за вашу участь!');
-    //         // Додати логіку завершення опитування, наприклад, перехід на головну сторінку
-    //         window.location.href = '/main-page(index)'; // Змінити на потрібний URL
-    //     });
-    // }
 });
+
+async function getRecommendations(URL, params){
+    try {
+        const res = await fetch(URL);
+
+        if (!res.ok) {
+            throw new Error('Response isn`t ok');
+        }
+
+        const data = await res.json();
+        sessionStorage.setItem('recommendationsList', JSON.stringify(data));
+        sessionStorage.setItem('paramsList', JSON.stringify(params));
+        window.location.href = 'recommendations.html';
+    } catch (error) {
+        console.error('Error while fetching map data:', error);
+    }
+}

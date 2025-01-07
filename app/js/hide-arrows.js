@@ -1,5 +1,5 @@
-(() => {
-    const scroller = document.querySelector('.scroller');
+function updateScrollerClasses(scrollerSelector) {
+    const scroller = document.querySelector(scrollerSelector);
     const images = scroller.querySelectorAll('img');
     const arrows = document.querySelector('.arrows');
 
@@ -23,4 +23,4 @@
     if (images.length === 1) {
         scroller.classList.add('one');
     }
-})();
+}

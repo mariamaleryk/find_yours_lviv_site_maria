@@ -1,5 +1,5 @@
 //button for random (button is fixed in the bottom right corner and above footer)
-document.addEventListener("DOMContentLoaded", function () {
+$(document).ready(function () {
     const button = document.querySelector(".option.random");
     const footer = document.querySelector("footer");
 
@@ -22,7 +22,8 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 //choose random recommendation
-document.addEventListener("DOMContentLoaded", () => {
+
+$(document).ready(() => {
     const randomButton = document.querySelector(".random"); // Знаходимо кнопку
     const places = document.querySelectorAll(".place"); // Знаходимо всі заклади
     let previousRandomIndex = null; // Змінна для відстеження попереднього вибору
