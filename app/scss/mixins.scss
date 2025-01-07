@@ -4,6 +4,12 @@
   font-size: 3vw;
   letter-spacing: 0.2vw;
 }
+@mixin font-montserrat-alternates-regular {
+  font-family: 'Montserrat Alternates', sans-serif;
+  font-weight: 500;
+  font-size: 3vw;
+  letter-spacing: 0.2vw;
+}
 
 @mixin font-montserrat-regular {
   font-family: Montserrat, sans-serif;
@@ -28,4 +34,11 @@
   font-weight: 400;
   font-size: 1vw;
   letter-spacing: 0.02vw;
+}
+
+@mixin font-dela-medium {
+  font-family: Dela Gothic One, sans-serif;
+  font-weight: 400;
+  font-size: 3vw;
+  letter-spacing: 0.2vw;
 }

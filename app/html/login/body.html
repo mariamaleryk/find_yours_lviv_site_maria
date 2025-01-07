@@ -1,0 +1,76 @@
+<!--<div id="myModal" class="modal">-->
+<!--    <div class="modal-content">-->
+<!--        <span class="close">&times;</span>-->
+<div class="container">
+
+    <!-- Checkbox for toggling between login and registration -->
+    <input type="checkbox" id="check">
+
+    <!-- Login form -->
+    <div class="login form">
+        <header>Вхід</header>
+        <form action="#" id="loginForm">
+            <div class="input-box">
+                <input type="email" id="loginEmail" placeholder="Введіть пошту" required autocomplete="off">
+            </div>
+
+            <div class="input-box">
+                <input type="password" placeholder="Введіть пароль" id="loginPassword"  required autocomplete="new-password">
+                <button type="button" class="bi bi-eye-slash" id="toggleLoginPassword"></button>
+                <span class="message" id="loginMessage"></span>
+
+                <!-- Password strength validation message -->
+                <div id="loginPasswordMessage" class="message" style="display: none;">
+                    <p id="loginLength" class="invalid">*пароль повинен містити не менше 8 символів</p>
+                    <p id="loginLetter" class="invalid">*повинен містити малу англійську літеру</p>
+                    <p id="loginCapital" class="invalid">*повинен містити велику англійську літеру</p>
+                </div>
+            </div>
+            <a href="#">Забули пароль?</a>
+            <input type="submit" class="button button-green" value="Вхід">
+        </form>
+        <div class="signup">
+            <span class="signup">Немає акаунта?
+                <label for="check">Зареєструватись</label>
+            </span>
+        </div>
+    </div>
+
+    <!-- Registration form -->
+    <div class="registration form">
+        <header>Реєстрація</header>
+        <form id="registrationForm">
+            <input type="email" placeholder="Введіть пошту" required autocomplete="off">
+
+            <!-- Password input -->
+            <div class="input-box">
+                <input type="password" id="password" placeholder="Створіть пароль" name="password" required autocomplete="new-password">
+                <button type="button" class="bi bi-eye-slash" id="togglePassword"></button>
+            </div>
+            <!-- Confirm Password input -->
+            <div class="input-box">
+                <input type="password" id="confirmPassword" placeholder="Підтвердіть пароль" name="confirmPassword"
+                       required>
+                <button type="button" class="bi bi-eye-slash" id="toggleConfirmPassword"></button>
+            </div>
+            <!-- Message for confirm password mismatch -->
+            <span class="message" id="confirmMessage"></span>
+
+            <!-- Password strength validation message -->
+            <div id="message" class="message" style="display: none;">
+                <p id="length" class="invalid">*пароль повинен містити не менше 8 символів</p>
+                <p id="letter" class="invalid">*повинен містити малу англійську літеру</p>
+                <p id="capital" class="invalid">*повинен містити велику англійську літеру</p>
+            </div>
+
+            <input type="submit" class="button button-green" value="Реєстрація">
+        </form>
+        <div class="signup">
+            <span class="signup">Є акаунт?
+                <label for="check">Вхід</label>
+            </span>
+        </div>
+    </div>
+</div>
+<!--    </div>-->
+<!--</div>-->
