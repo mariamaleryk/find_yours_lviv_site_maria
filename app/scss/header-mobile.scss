@@ -1,0 +1,166 @@
+.header-mobile {
+  overflow: hidden !important;
+  width: 100%;
+
+  .nav-mobile {
+    flex-wrap: nowrap;
+    display: flex;
+    justify-content: space-between;
+
+  }
+
+  .mob-right-nav {
+    display: flex;
+
+    .search-block {
+      align-items: center;
+      display: none;//  ПОКИ ПРИХОВАЛА ПОШУК
+      margin-right: 2vw;
+
+      .search-bar {
+        display: flex;
+        border: 3px solid #fff;
+        border-radius: 50px;
+        width: 5vw;
+        height: 5vw;
+        //max-height: 3rem;
+        //height:100%;
+        background: rgba(217, 217, 217, 0.2);
+        justify-content: center;
+        padding: 0 1vw 0 1vw;
+
+        input:focus {
+          //outline: none; /* Прибирає стандартний контур при фокусуванні */
+          color: white; /* Колір тексту під час введення */
+        }
+
+        input {
+          background: transparent;
+          //flex: 1;
+          width: 100%;
+          height: 100%;
+          border: none;
+          outline: none;
+        }
+
+        button {
+          border: none;
+          background: transparent; /* Щоб кнопка не мала фону */
+          padding: 0;
+          cursor: pointer;
+        }
+
+        button img {
+          width: 2vw;
+          color: #fff;
+          //line-height: 0;
+        }
+      }
+    }
+  }
+
+  .nav-mobile {
+    width: 100%;
+    display: flex;
+    // align-items: center;
+    //align-content: space-between;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+
+  .logo {
+    width: 21vw;
+    height: 8vw;
+  }
+
+  .burger-menu {
+
+    padding-right: 2vw;
+    //max-width: 5vw;
+    //max-height: 1vw;
+    //width: 2em;
+    font-weight: 600;
+    cursor: pointer;
+    color: white;
+    font-size: 5vw;
+
+
+    .burger-menu:hover {
+      color: #f1f1f1; /* Можна змінити колір при наведенні */
+    }
+  }
+
+  .overlay {
+    height: 100%;
+    width: 0;
+    position: fixed;
+    z-index: 1;
+    right: 0; /* Меню відкривається з правого боку */
+    top: 0;
+    background-color: white; /* Білий фон */
+    box-shadow: -4px 0 10px rgba(0, 0, 0, 0.2); /* Тінь зліва */
+    overflow-x: hidden; /* Вимкнути горизонтальне прокручування */
+    transition: 0.5s; /* Перехід при відкритті */
+  }
+
+  .overlay-content {
+    display: flex;
+    flex-direction: column; /* Вирівнюємо пункти по вертикалі */
+    align-items: center; /* Центруємо пункти по горизонталі */
+    //justify-content: flex-start; /* Починаємо з верхньої частини */
+    margin-top: 6vw; /* Відступ зверху */
+  }
+
+  .overlay-content ul {
+    display: block;
+    padding: 0; /* Прибираємо відступи */
+    list-style: none; /* Прибираємо маркери */
+    width: 100%; /* Задаємо ширину на весь контейнер */
+  }
+
+  .overlay-content ul li {
+
+    text-align: center; /* Текст по центру */
+    font-size: 2.4vw; /* Розмір шрифта */
+    color: black; /* Колір тексту чорний */
+    padding: 1.5vw 0; /* Відступи для кожного пункту */
+    transition: 0.3s; /* Перехід при наведенні */
+    border-bottom: 1px solid #ccc; /* Горизонтальна лінія між пунктами */
+  }
+
+  .overlay-content ul li:last-child {
+    border-bottom: none; /* Прибираємо лінію для останнього елемента */
+
+  }
+
+  .overlay a {
+    color: black;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.5vw;
+    font-weight: 600;
+  }
+
+  .overlay a:hover, .overlay a:focus {
+    text-shadow: 1px 1px 3px black;
+  }
+
+  .overlay .closebtn {
+    position: absolute;
+    // top: 0.5vw;
+    left: 2vw; /* Розміщення кнопки закриття з лівого боку */
+    font-size: 6vw;
+    color: black; /* Колір кнопки чорний */
+    cursor: pointer;
+    text-decoration: none;
+  }
+
+  .overlay .closebtn:hover {
+    color: #f1f1f1; /* Зміна кольору кнопки закриття при наведенні */
+  }
+
+
+
+
+
+}
