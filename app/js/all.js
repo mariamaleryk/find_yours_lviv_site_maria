@@ -30,6 +30,12 @@ likeIcons.forEach((likeIcon, index) => {
             localStorage.setItem(`liked-${index}`, 'true');
         }
     });
+    // Додатково для підтримки мобільних пристроїв (сенсорні екрани)
+    likeIcon.addEventListener('touchend', (event) => {
+        // Використовуємо touchend для більш точного зчитування натискання
+        event.preventDefault(); // Оскільки touchend може мати деякі різниці в поведінці
+        likeIcon.click(); // Імітуємо клік на мобільних пристроях
+    });
 });
 
 // Оновлюємо статус лайків при завантаженні сторінки
@@ -47,19 +53,43 @@ document.querySelectorAll('nav ul li a').forEach(anchor => {
 });
 $(document).ready(function () {
     $(".owl-carousel").owlCarousel({
-        items: 1,
-        loop: true,
-        margin: 10,
+        items: 1,         // Тільки один слайд за раз
+        loop: false,      // Вимикаємо loop, щоб не було дублювання слайдів
+        margin: 0,
         navText: [$('.left-arrow'), $('.right-arrow')],
         nav: true,
-        dots: true,
+        dots: true,       // Включаємо крапки
         autoplay: false,
         smartSpeed: 1000,
+        rewind: true,     // Зациклення (повертається до першого слайду)
         responsive: {
-            0: { items: 1 },
-            768: { items: 1 },
-            1200: { items: 1 }
+            0: { items: 1, dots: true },
+            768: { items: 1, dots: true },
+            1200: { items: 1, dots: true }
         }
     });
 });
+$(document).ready(function () {
+    var owl = $(".owl-carousel");
+    owl.owlCarousel({
+        items: 1,               // Тільки один слайд за раз
+        loop: true,             // Зациклюємо
+        margin: 0,
+        navText: [
+            $('.left-arrow'),  // Ліва стрілка
+            $('.right-arrow')  // Права стрілка
+        ],
+        nav: true,              // Включаємо стрілки
+        dots: true,             // Включаємо крапки
+        autoplay: false,        // Вимкнути авто-прокрутку
+        smartSpeed: 1000,       // Швидкість прокрутки
+        responsive: {
+            0: { items: 1, dots: true },
+            768: { items: 1, dots: true },
+            1200: { items: 1, dots: true }
+        }
+    });
+});
+
+
 

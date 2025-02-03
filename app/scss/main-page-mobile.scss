@@ -1,0 +1,197 @@
+@media (min-width: 0px) and (max-width: 959px) {
+
+.row > * {
+  width: auto;
+}
+.col-sm-12 {
+  flex: 0 0 auto;
+  width: 100%;
+}
+
+.col-md-12 {
+  flex: 0 0 auto;
+  width: 100%;
+}
+.container-fluid {
+  padding-top: 18%;
+}
+.main-page .main-button {
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+.main-page .left-part-main .slogan {
+  font-size: 5vw;
+  margin-bottom: 2.5vw;
+
+}
+.main-description {
+  display: none;
+}
+.main-titles-mob {
+  display: flex;
+  justify-content: center;
+
+}
+.main-page .main-button .main-titles {
+  padding: 3.5vw;
+  width: 8em;
+  border-radius: 1em;
+}
+
+
+.main-page .main-button a h3 {
+  font-size: 4vw;
+}
+//.main-page .opera{
+//  top:-10%;
+//}
+
+.main-page .opera img {
+  //padding-top: 0;
+  height: fit-content;
+  //padding-top: 5%;
+  width: 70vw;
+
+  top: -10%;
+  position: relative;
+}
+.user-rec .repeating-text {
+  font-size: 4.5vw;
+  left: -1vw;
+}
+.user-rec {
+  left: -1vw;
+  position: relative;
+}
+.item {
+  //display: flex;
+  justify-content: center;
+}
+.arrow-button {
+  display: none;
+}
+//секція з рекомендаціями
+.recommended .item h2 {
+  font-size: 2em;
+}
+.recommended .item .p-r {
+  flex-wrap: wrap;
+}
+.recom-mob {
+  flex-wrap: wrap;
+}
+
+.recommended .item .p-r:hover {
+  transform: none; /* Збільшуємо блок на 10% */
+}
+.recommended .item img {
+  width: 35vw !important;
+  max-width: 35vw;
+  height: 40vw;
+  border-radius: 2em 0 0 2em;
+}
+.recommended .item .card-body {
+  padding: 0.5em;
+  border-radius: 0 2em 2em 0;
+  width: 40vw;
+  //min-width: 40vw;
+  max-width: 40vw !important;
+  height: auto;
+  max-height: 40vw;
+}
+.recommended .item .card-body .small-icon {
+  padding: 0.2em;
+
+  img {
+    width: 0.8em !important;
+    height: 0.8em !important;
+  }
+}
+.recommended .item .card-body .card-title {
+  padding: 0 0 0 0.4em;
+  margin-bottom: 1em;
+  font-size: 3vw;
+  line-height: 4vw;
+}
+.recommended .item .card-body .card-text {
+  font-size: 2vw;
+}
+.recom-photo {
+  display: flex;
+}
+.like-icon svg {
+  //position: relative;
+  bottom: -10vw;
+  right: 3vw;
+  //transform: translate(-40%,13rem);
+  width: 8vw;
+  height: 8vw;
+}
+.about-us {
+  margin-top: 0;
+  padding: 5vw;
+}
+.about-us img {
+  display: none;
+}
+.about-us {
+  h2 {
+    font-size: 6vw;
+  }
+
+  p {
+    font-size: 3vw;
+    font-weight: 500 ;
+
+  }
+}
+
+
+.owl-nav button {
+  position: absolute;
+  top: 50%;
+  background-color: #000;
+  color: #9c9999;
+  margin: 0;
+  transition: all 0.3s ease-in-out;
+}
+.owl-nav button.owl-prev {
+  left: 0;
+}
+.owl-nav button.owl-next {
+  right: 0;
+}
+
+.owl-dots {
+  text-align: center;
+  padding-top: 15px;
+}
+.owl-dots button.owl-dot {
+  width: 15px;
+  height: 15px;
+  border-radius: 50%;
+  display: inline-block;
+  background: #9c9999;
+  margin: 0 3px;
+}
+.owl-dots button.owl-dot.active {
+  background-color: #4c7839;
+}
+.owl-dots button.owl-dot:focus {
+  outline: none;
+}
+.owl-nav button {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(255, 255, 255, 0.38) !important;
+}
+
+
+.owl-carousel .owl-nav button.owl-next,
+.owl-carousel .owl-nav button.owl-prev,
+.owl-carousel button.owl-dot {
+  background: #959494;
+}
+
+}

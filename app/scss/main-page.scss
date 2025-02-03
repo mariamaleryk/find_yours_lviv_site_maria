@@ -184,6 +184,8 @@
 .recommended {
 
   .item {
+    //justify-content: right;
+    //display: flex;
     h2 {
       font-family: "Unbounded", sans-serif;
       font-size: 3em;
@@ -270,6 +272,7 @@
 
     img {
       border-radius: 2em 2em 0 0;
+      width: 20vw;
       max-width: 20vw;
       object-fit: cover;
       height: 14em;
@@ -298,6 +301,11 @@
     right: 2.5vw;
   }
 
+  .recom-photo {
+    position: relative !important;
+
+  }
+
 }
 
 .owl-carousel .owl-stage {
@@ -305,7 +313,6 @@
 }
 
 
-//Марія дописала
 .item {
   margin: 0 5vw;
 }
@@ -347,116 +354,10 @@
   .recommended .item img {
     height: 18vw;
   }
+  .recommended .item .card-body .small-icon img{
+    height: 1.2em;
+    width: 1.2em;
+  }
 }
 
-@media (min-width: 0px) and (max-width: 959px) {
-  .row > * {
-    width: auto;
-  }
-  .col-sm-12 {
-    flex: 0 0 auto;
-    width: 100%;
-  }
 
-  .col-md-12 {
-    flex: 0 0 auto;
-    width: 100%;
-  }
-  .container-fluid {
-    padding-top: 18%;
-  }
-  .main-page .main-button {
-    flex-wrap: wrap;
-    justify-content: space-around;
-  }
-  .main-page .left-part-main .slogan {
-    font-size: 5vw;
-    margin-bottom: 2.5vw;
-
-  }
-  .main-description {
-    display: none;
-  }
-  .main-titles-mob {
-    display: flex;
-    justify-content: center;
-
-  }
-  .main-page .main-button .main-titles {
-    padding: 3.5vw;
-    width: 8em;
-    border-radius: 1em;
-  }
-
-
-  .main-page .main-button a h3 {
-    font-size: 4vw;
-  }
-  //.main-page .opera{
-  //  top:-10%;
-  //}
-
-  .main-page .opera img {
-    //padding-top: 0;
-    height: fit-content;
-    //padding-top: 5%;
-    width: 70vw;
-
-    top: -10%;
-    position: relative;
-  }
-  .user-rec .repeating-text {
-    font-size: 4.5vw;
-    left: -1vw;
-  }
-  .user-rec {
-    left: -1vw;
-    position: relative;
-  }
-  //секція з рекомендаціями
-   .recommended .item h2 {
-      font-size: 2em;
-    }
-  .recommended .item .p-r{
-    flex-wrap: wrap;
-  }
-
-  //.recommended .item img {
-  ////height: 10em;
-  //  width: 12em;
-  //}
-
-
-}
-
-//.main-page .opera{
-//
-//}
-//
-//
-//
-//.main-page .opera img {
-//  top: -10%;
-//  position: relative;
-//  display: flex;
-//  justify-content: end;
-//  width: 70%;
-//  height: 85%;
-//
-//
-//  //right: 0;
-//}
-
-
-//@media (max-width: 700px) {
-//.main-description{
-//  display: none;
-//}
-//  .main-page .opera img {
-//    display: flex;
-//    align-items: flex-end;
-//    height: fit-content;
-//    padding-top: 20%;
-//  }
-//
-//}
