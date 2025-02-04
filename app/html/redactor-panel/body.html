@@ -8,125 +8,189 @@
             <button class="tab">Редагувати локацію</button>
         </div>
         <form>
-            <input type="text" placeholder="Назва...">
-            <input type="text" placeholder="Адреса...">
+            <input type="text" required placeholder="Назва...">
+            <input type="text" required placeholder="Адреса...">
 
-            <fieldset>
-                <legend>Район</legend>
-                <label><input type="radio" name="district" value="center"> Центр міста</label>
-                <label><input type="radio" name="district" value="sikiv"> Сихівський</label>
-                <label><input type="radio" name="district" value="shev"> Шевченківський</label>
-                <label><input type="radio" name="district" value="frank"> Франківський</label>
-                <label><input type="radio" name="district" value="lichak"> Личаківський</label>
-                <label><input type="radio" name="district" value="zaliz"> Залізничний</label>
+            <fieldset class="custom-field">
+                <legend class="custom-field-title">Район</legend>
+                <input type="radio" id="center" name="district" value="center"><label for="center">Центр
+                міста</label>
+                <input type="radio" id="sikiv" name="district" value="sikiv"><label for="sikiv">Сихівський</label>
+                <input type="radio" id="shev" name="district" value="shev"><label for="shev">Шевченківський</label>
+                <input type="radio" id="frank" name="district" value="frank"><label
+                    for="frank">Франківський</label>
+                <input type="radio" id="lichak" name="district" value="lichak"><label
+                    for="lichak">Личаківський</label>
+                <input type="radio" id="zaliz" name="district" value="zaliz"><label for="zaliz">Залізничний</label>
             </fieldset>
 
-            <fieldset>
-                <legend>Пет-френдлі?</legend>
-                <label><input type="radio" name="pet" value="yes"> Так</label>
-                <label><input type="radio" name="pet" value="no"> Ні</label>
+            <fieldset class="custom-field">
+                <legend class="custom-field-title">Пет-френдлі?</legend>
+                <input type="radio" id="pet-yes" name="pet" value="yes"><label for="pet-yes">Так</label>
+                <input type="radio" id="pet-no" name="pet" value="no"><label for="pet-no">Ні</label>
             </fieldset>
 
-            <fieldset>
-                <legend>Кухня</legend>
-                <label><input type="checkbox" value="ukrainian"> Українська</label>
-                <label><input type="checkbox" value="european"> Європейська</label>
-                <label><input type="checkbox" value="asian"> Азійська</label>
-                <label><input type="checkbox" value="american"> Американська</label>
-                <label><input type="checkbox" value="georgian"> Грузинська</label>
-                <label><input type="checkbox" value="italian"> Італійська</label>
+            <fieldset class="custom-field">
+                <legend class="custom-field-title">Кухня</legend>
+                <input type="checkbox" name="cuisine" id="ukrainian" value="ukrainian"><label for="ukrainian">Українська</label>
+                <input type="checkbox" name="cuisine" id="european" value="european"><label for="european">Європейська</label>
+                <input type="checkbox" name="cuisine" id="asian" value="asian"><label for="asian">Азійська</label>
+                <input type="checkbox" name="cuisine" id="american" value="american"><label for="american">Американська</label>
+                <input type="checkbox" name="cuisine" id="georgian" value="georgian"><label for="georgian">Грузинська</label>
+                <input type="checkbox" name="cuisine" id="italian" value="italian"><label for="italian">Італійська</label>
             </fieldset>
 
-            <fieldset>
-                <legend>Тип закладу</legend>
-                <label><input type="radio" name="type" value="restaurant"> Ресторан</label>
-                <label><input type="radio" name="type" value="cafe"> Кав’ярня</label>
-                <label><input type="radio" name="type" value="steakhouse"> Стейк-хаус</label>
-                <label><input type="radio" name="type" value="fastfood"> Фаст-фуд</label>
-                <label><input type="radio" name="type" value="bar"> Бар</label>
-                <label><input type="radio" name="type" value="pizzeria"> Піцерія</label>
+            <fieldset class="custom-field">
+                <legend class="custom-field-title">Тип закладу</legend>
+                <input type="radio" id="restaurant" name="type" value="restaurant"><label
+                    for="restaurant">Ресторан</label>
+                <input type="radio" id="cafe" name="type" value="cafe"><label for="cafe">Кав’ярня</label>
+                <input type="radio" id="steakhouse" name="type" value="steakhouse"><label
+                    for="steakhouse">Стейк-хаус</label>
+                <input type="radio" id="fastfood" name="type" value="fastfood"><label for="fastfood">Фаст-фуд</label>
+                <input type="radio" id="bar" name="type" value="bar"><label for="bar">Бар</label>
+                <input type="radio" id="pizzeria" name="type" value="pizzeria"><label for="pizzeria">Піцерія</label>
             </fieldset>
 
-            <textarea placeholder="Опис..."></textarea>
-            <input type="text" placeholder="Номери телефону...">
-            <input type="text" placeholder="Сайт...">
-            <input type="text" placeholder="Посилання на Google Maps...">
-            <div class="placeholder">
-                <p>Координати</p>
-                <input type="text" placeholder="Довгота...">
-                <input type="text" placeholder="Широта...">
-            </div>
+            <fieldset class="custom-field">
+                <legend class="custom-field-title">Бюджет</legend>
+                <input type="radio" id="budget-min" name="budget" value="min">
+                <label for="budget-min">Мінімальний</label>
 
-            <div class="working-hours">
-                <h2>Години роботи</h2>
-                <form id="working-hours-form">
-                    <div class="day" data-day="Пн">
-                        <input type="checkbox" checked>
-                        <label>Пн</label>
-                        <span>з</span>
-                        <select class="time-start"></select>
-                        <span>до</span>
-                        <select class="time-end"></select>
-                    </div>
-                    <div class="day" data-day="Вт">
-                        <input type="checkbox" checked>
-                        <label>Вт</label>
-                        <span>з</span>
-                        <select class="time-start"></select>
-                        <span>до</span>
-                        <select class="time-end"></select>
-                    </div>
-                    <div class="day" data-day="Ср">
-                        <input type="checkbox" checked>
-                        <label>Ср</label>
-                        <span>з</span>
-                        <select class="time-start"></select>
-                        <span>до</span>
-                        <select class="time-end"></select>
-                    </div>
-                    <div class="day" data-day="Чт">
-                        <input type="checkbox" checked>
-                        <label>Чт</label>
-                        <span>з</span>
-                        <select class="time-start"></select>
-                        <span>до</span>
-                        <select class="time-end"></select>
-                    </div>
-                    <div class="day" data-day="Пт">
-                        <input type="checkbox" checked>
-                        <label>Пт</label>
-                        <span>з</span>
-                        <select class="time-start"></select>
-                        <span>до</span>
-                        <select class="time-end"></select>
-                    </div>
-                    <div class="day" data-day="Сб">
-                        <input type="checkbox" checked>
-                        <label>Сб</label>
-                        <span>з</span>
-                        <select class="time-start"></select>
-                        <span>до</span>
-                        <select class="time-end"></select>
-                    </div>
-                    <div class="day" data-day="Нд">
-                        <input type="checkbox" checked>
-                        <label>Нд</label>
-                        <span>з</span>
-                        <select class="time-start"></select>
-                        <span>до</span>
-                        <select class="time-end"></select>
-                    </div>
+                <input type="radio" id="budget-mid" name="budget" value="mid">
+                <label for="budget-mid">Середній</label>
 
-            <div class="paste-photo">
-                <h2>Фото</h2>
-                <div id="photo-gallery" class="gallery"></div>
-                <input type="text" id="photo-url" placeholder="Вставте посилання на фото">
-                <button id="add-photo">Додати фото</button>
-            </div>
+                <input type="radio" id="budget-premium" name="budget" value="premium">
+                <label for="budget-premium">Преміум</label>
+            </fieldset>
 
-            <button type="submit">Зберегти</button>
-                </form>
-            </div>
+            <fieldset class="custom-field">
+                <legend class="custom-field-title">Мета візиту</legend>
+                <input type="checkbox" id="goal-banquet" value="banquet">
+                <label for="goal-banquet">Банкет</label>
+
+                <input type="checkbox" id="goal-date" value="date">
+                <label for="goal-date">Побачення</label>
+
+                <input type="checkbox" id="goal-friends" value="friends">
+                <label for="goal-friends">Зустріч з друзями</label>
+
+                <input type="checkbox" id="goal-food" value="food">
+                <label for="goal-food">Ситно поїсти</label>
+
+                <input type="checkbox" id="goal-family" value="family">
+                <label for="goal-family">Сімейний відпочинок</label>
+            </fieldset>
+
+            <textarea required  placeholder="Опис..."></textarea>
+            <input type="tel" required placeholder="Номери телефону...">
+            <input type="url" required placeholder="Сайт...">
+            <input type="url" required placeholder="Посилання на Google Maps...">
+
+            <fieldset>
+                <legend class="custom-field-title">Координати</legend>
+                <input type="number" required placeholder="Довгота...">
+                <input type="number" required placeholder="Широта...">
+            </fieldset>
+
+            <fieldset class="custom-field">
+                <legend class="custom-field-title">Години роботи</legend>
+                <div class="day" data-day="Пн">
+                    <input type="checkbox" id="mon" checked>
+                    <label for="mon">Пн</label>
+                    <span>з</span>
+                    <select class="time-start"></select>
+                    <span>до</span>
+                    <select class="time-end"></select>
+                </div>
+                <div class="day" data-day="Вт">
+                    <input type="checkbox" id="tue" checked>
+                    <label for="tue">Вт</label>
+                    <span>з</span>
+                    <select class="time-start"></select>
+                    <span>до</span>
+                    <select class="time-end"></select>
+                </div>
+                <div class="day" data-day="Ср">
+                    <input type="checkbox" id="wed" checked>
+                    <label for="wed">Ср</label>
+                    <span>з</span>
+                    <select class="time-start"></select>
+                    <span>до</span>
+                    <select class="time-end"></select>
+                </div>
+                <div class="day" data-day="Чт">
+                    <input type="checkbox" id="thu" checked>
+                    <label for="thu">Чт</label>
+                    <span>з</span>
+                    <select class="time-start"></select>
+                    <span>до</span>
+                    <select class="time-end"></select>
+                </div>
+                <div class="day" data-day="Пт">
+                    <input type="checkbox" id="fri" checked>
+                    <label for="fri">Пт</label>
+                    <span>з</span>
+                    <select class="time-start"></select>
+                    <span>до</span>
+                    <select class="time-end"></select>
+                </div>
+                <div class="day" data-day="Сб">
+                    <input type="checkbox" id="sat" checked>
+                    <label for="sat">Сб</label>
+                    <span>з</span>
+                    <select class="time-start"></select>
+                    <span>до</span>
+                    <select class="time-end"></select>
+                </div>
+                <div class="day" data-day="Нд">
+                    <input type="checkbox" id="sun" checked>
+                    <label for="sun">Нд</label>
+                    <span>з</span>
+                    <select class="time-start"></select>
+                    <span>до</span>
+                    <select class="time-end"></select>
+                </div>
+            </fieldset>
+            <fieldset class="custom-field">
+                <legend class="custom-field-title">Фото</legend>
+                <div id="photo-gallery" class="photo-gallery">
+<!--                    <div class="photo">-->
+<!--                        <img src="https://th.bing.com/th/id/R.ac4e9e343943905dc7817c83f6b240a8?rik=%2bVCzLHmB0jkLxQ&riu=http%3a%2f%2ffotorelax.ru%2fwp-content%2fuploads%2f2015%2f10%2fsamye-fotografiruemye-goroda_32.jpg&ehk=SVuhcjI%2fsPUkf5iSidQnByNNHZf3JwTHt0YULMXVs84%3d&risl=&pid=ImgRaw&r=0"-->
+<!--                             alt="Фото">-->
+<!--                        <div class="remove">-->
+<!--                            <img src="./icons/cross.svg" alt="cross">-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                    <div class="photo">-->
+<!--                        <img src="https://img.freepik.com/free-photo/lavender-field-at-sunset-near-valensole_268835-3910.jpg"-->
+<!--                             alt="Фото">-->
+<!--                        <div class="remove">-->
+<!--                            <img src="./icons/cross.svg" alt="cross">-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                    <div class="photo">-->
+<!--                        <img src="https://img.freepik.com/free-photo/lavender-field-at-sunset-near-valensole_268835-3910.jpg"-->
+<!--                             alt="Фото">-->
+<!--                        <div class="remove">-->
+<!--                            <img src="./icons/cross.svg" alt="cross">-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                    <div class="photo">-->
+<!--                        <img src="https://img.freepik.com/free-photo/close-up-on-kitten-looking-up_23-2150782333.jpg"-->
+<!--                             alt="Фото">-->
+<!--                        <div class="remove">-->
+<!--                            <img src="./icons/cross.svg" alt="cross">-->
+<!--                        </div>-->
+<!--                    </div>-->
+                </div>
+                <div class="photo-upload">
+                    <input type="text" id="photo-url" placeholder="Вставити наступне фото...">
+                    <button id="add-photo">Додати фото</button>
+                </div>
+            </fieldset>
+
+            <button id="submit" type="submit">Зберегти</button>
         </form>
     </div>
 
