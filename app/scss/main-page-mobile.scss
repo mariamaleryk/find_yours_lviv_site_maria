@@ -175,7 +175,7 @@
   margin: 0 3px;
 }
 .owl-dots button.owl-dot.active {
-  background-color: #4c7839;
+  background-color: #4c7839!important;
 }
 .owl-dots button.owl-dot:focus {
   outline: none;
@@ -191,7 +191,7 @@
 .owl-carousel .owl-nav button.owl-next,
 .owl-carousel .owl-nav button.owl-prev,
 .owl-carousel button.owl-dot {
-  background: #959494;
+  background: #959494!important;
 }
 
 }

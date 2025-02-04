@@ -70,8 +70,8 @@
 
 
   .logo {
-    width: 21vw;
-    height: 8vw;
+    width: 22vw;
+    height: 10vw;
   }
 
   .burger-menu {
@@ -90,10 +90,19 @@
       color: #f1f1f1; /* Можна змінити колір при наведенні */
     }
   }
+.burger-menu-mob{
+  span {
+    background-color: rgba(0, 0, 0, 0) !important;
+    //border-radius: .2vw;
+    flex-grow: 1;
+    //height: -1;
+    transition: background-color .3s ease-in-out;
+  }
+}
 
   .overlay {
-    height: 100%;
-    width: 0;
+    //height: 32vw;
+    //width: 0;
     position: fixed;
     z-index: 1;
     right: 0; /* Меню відкривається з правого боку */
@@ -109,7 +118,7 @@
     flex-direction: column; /* Вирівнюємо пункти по вертикалі */
     align-items: center; /* Центруємо пункти по горизонталі */
     //justify-content: flex-start; /* Починаємо з верхньої частини */
-    margin-top: 6vw; /* Відступ зверху */
+    margin-top: 10vw; /* Відступ зверху */
   }
 
   .overlay-content ul {
@@ -137,7 +146,8 @@
   .overlay a {
     color: black;
     font-family: 'Montserrat', sans-serif;
-    font-size: 1.5vw;
+   font-size: 3.7vw;
+    //font-size:50%;
     font-weight: 600;
   }
 
@@ -148,7 +158,7 @@
   .overlay .closebtn {
     position: absolute;
     // top: 0.5vw;
-    left: 2vw; /* Розміщення кнопки закриття з лівого боку */
+    right: 2vw; /* Розміщення кнопки закриття з лівого боку */
     font-size: 6vw;
     color: black; /* Колір кнопки чорний */
     cursor: pointer;

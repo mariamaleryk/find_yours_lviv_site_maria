@@ -6,7 +6,7 @@
             <img class="logo" src="../../images/logo.svg" alt="Логотип"></a>
         <div class="search-block">
             <form action="" class="search-bar">
-                <input type="text" placeholder="Введіть локацію" name="q">
+                <input type="text" placeholder="Пошук ..." name="q">
                 <button type="submit"><img src="../../icons/Search.svg" alt=""></button>
             </form>
         </div>
@@ -31,12 +31,17 @@
                         <button type="submit"><img src="../../icons/Search.svg" alt=""></button>
                     </form>
                 </div>
-                <span  class="burger-menu"  onclick="openNav()">&#9776;</span>
+               <div class="burger-menu-mob"> <span  class="burger-menu"  onclick="openNav()">&#9776;</span> </div>
 
                 <div id="myNav" class="overlay">
                     <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
                     <div class="overlay-content">
                         <ul>
+                            <li> <a href="../index.html">Головна</a></li>
+                            <li><a href="../html/place-question.html" target="_blank" class="nav-bottom">Заклади</a></li>
+                            <li><a href="../html/location-question.html" target="_blank" class="nav-bottom">Локації</a></li>
+                            <li><a href="../html/map.html" class="nav-bottom">Карта</a></li>
+
                             <li><a href="#recomm">Рекомендації</a></li>
                             <li><a href="#about-us">Про нас</a></li>
                             <li><a class="active" href="./html/login.html" target="_parent">Увійти</a></li>
