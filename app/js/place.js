@@ -1,70 +1,69 @@
 document.addEventListener('DOMContentLoaded', function () {
 
     let place = sessionStorage.getItem('placePage');
-    place = JSON.parse(place);
+    place = JSON.parse(place)[0];
 
-    place.forEach((item) => {
-        const main_photo = document.getElementById("data-container");
-        const photo = document.createElement("img");
-        photo.src = item.photos[0];
-        photo.alt = "Фото з закладу";
-        main_photo.appendChild(photo);
+    const main_photo = document.getElementById("main_photo");
+    const photo = document.createElement("img");
+    photo.src = place.photos[0];
+    photo.alt = "Фото з закладу";
+    main_photo.appendChild(photo);
 
-        const name_and_district = document.getElementById("n&d");
-        const h1 = document.createElement("h1");
-        h1.id = "name";
-        h1.textContent = item.place_name;
+    const name_and_district = document.getElementById("n&d");
+    const h1 = document.createElement("h1");
+    h1.id = "name";
+    h1.textContent = place.place_name;
 
-        const h5 = document.createElement("h5");
-        h5.className = "place";
-        h5.textContent = item.district;
+    const h5 = document.createElement("h5");
+    h5.className = "place";
+    h5.textContent = place.district;
 
-        name_and_district.appendChild(h1);
-        name_and_district.appendChild(h5);
+    name_and_district.appendChild(h1);
+    name_and_district.appendChild(h5);
 
-        const type = document.getElementById("place-type");
-        type.textContent = item.type_name;
+    const type = document.getElementById("place-type");
+    type.textContent = place.type_name;
 
-        const friendly = document.getElementById("pet-friendly");
-        if (item.pet_friendly) {
-            friendly.textContent = 'так';
-        } else {
-            friendly.textContent = 'ні';
-        }
+    const friendly = document.getElementById("pet-friendly");
+    if (place.pet_friendly) {
+        friendly.textContent = 'так';
+    } else {
+        friendly.textContent = 'ні';
+    }
 
-        const time = document.getElementById("working-time");
-        if (item.work_time[0] === 'null')
-            time.innerHTML = 'немає';
-        else
-            time.innerHTML = item.work_time.join('<br>');
+    const time = document.getElementById("working-time");
+    if (place.work_time[0] === 'null')
+        time.innerHTML = 'немає';
+    else
+        time.innerHTML = place.work_time.join('<br>');
 
-        const cuisine_name = document.getElementById("cuisine");
-        if (item.cuisine[0] === 'null')
-            cuisine_name.innerHTML = 'немає';
-        else
-            cuisine_name.innerHTML = item.cuisine.join(", ");
+    const cuisine_name = document.getElementById("cuisine");
+    if (place.cuisine[0] === 'null')
+        cuisine_name.innerHTML = 'немає';
+    else
+        cuisine_name.innerHTML = place.cuisine.join(", ");
 
-        const budget = document.getElementById("budget");
-        budget.textContent = item.budget;
+    const budget = document.getElementById("budget");
+    budget.textContent = place.budget;
 
-        const location = document.getElementById("location");
-        location.textContent = item.address;
+    const address = document.getElementById("address");
+    address.textContent = place.address;
+    address.href = place.map_link;
 
-        const description = document.querySelector(".rest-description");
-        description.textContent = item.description;
+    const description = document.querySelector(".rest-description");
+    description.textContent = place.description;
 
-        const phone = document.querySelector(".connect a");
-        phone.href = `tel:${item.phone ? item.phone.join(', ') : 'немає'}`;
-        phone.innerHTML = item.phone ? item.phone.join(', ') : 'немає';
+    const phone = document.querySelector(".connect a");
+    phone.href = `tel:${place.phone ? place.phone.join(', ') : 'немає'}`;
+    phone.innerHTML = place.phone ? place.phone.join(', ') : 'немає';
 
-        const link = document.querySelector(".text-end a");
-        link.target = "_blank";
-        link.href = item.website_link;
-        link.textContent = item.website_link || "немає";
+    const link = document.querySelector(".text-end a");
+    link.target = "_blank";
+    link.href = place.website_link;
+    link.textContent = place.website_link || "немає";
 
-        const photos = document.querySelector(".scroller");
-        photos.innerHTML = item.photos && item.photos.slice(1).map(photo => `<img src="${photo}" alt="${item.place_name}">`).join('') || '';
+    const photos = document.querySelector(".scroller");
+    photos.innerHTML = place.photos && place.photos.slice(1).map(photo => `<img src="${photo}" alt="${place.place_name}">`).join('') || '';
 
-        updateScrollerClasses('.scroller');
-    });
+    updateScrollerClasses('.scroller');
 })

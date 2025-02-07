@@ -11,13 +11,12 @@
             </form>
         </div>
         <ul>
-            <li><a href="#home">Головна</a></li>
-            <li><a href="#recomm">Рекомендації</a></li>
-            <li><a href="#about-us">Про нас</a></li>
-            <li><a class="active" href="./html/login.html" target="_top">Увійти</a></li>
+            <li><a href="../index.html#home">Головна</a></li>
+            <li><a href="../index.html#recomm">Рекомендації</a></li>
+            <li><a href="../index.html#about-us">Про нас</a></li>
+            <li><a class="active" id="login-btn">Увійти</a></li>
         </ul>
     </div>
-
 
     <div class="header-mobile  navbar-expand  bd-navbar flex-row ">
         <div class="nav-mobile">
@@ -31,26 +30,29 @@
                         <button type="submit"><img src="../../icons/Search.svg" alt=""></button>
                     </form>
                 </div>
-               <div class="burger-menu-mob"> <span  class="burger-menu"  onclick="openNav()">&#9776;</span> </div>
+                <div class="burger-menu-mob"><span class="burger-menu" onclick="openNav()">&#9776;</span></div>
 
                 <div id="myNav" class="overlay">
                     <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
                     <div class="overlay-content">
                         <ul>
-                            <li> <a href="../index.html">Головна</a></li>
-                            <li><a href="../html/place-question.html" target="_blank" class="nav-bottom">Заклади</a></li>
-                            <li><a href="../html/location-question.html" target="_blank" class="nav-bottom">Локації</a></li>
+                            <li><a href="../index.html#home">Головна</a></li>
+                            <li><a href="../html/place-question.html" target="_blank" class="nav-bottom">Заклади</a>
+                            </li>
+                            <li><a href="../html/location-question.html" target="_blank" class="nav-bottom">Локації</a>
+                            </li>
                             <li><a href="../html/map.html" class="nav-bottom">Карта</a></li>
 
-                            <li><a href="#recomm">Рекомендації</a></li>
-                            <li><a href="#about-us">Про нас</a></li>
-                            <li><a class="active" href="./html/login.html" target="_parent">Увійти</a></li>
+                            <li><a href="../index.html#recomm">Рекомендації</a></li>
+                            <li><a href="../index.html#about-us">Про нас</a></li>
+                            <li><a class="active" id="login-btn">Увійти</a></li>
                         </ul>
                     </div>
                 </div>
-                </div>
             </div>
-
         </div>
+
     </div>
+
+
 </header>

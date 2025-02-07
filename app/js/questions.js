@@ -260,7 +260,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 async function getRecommendations(URL, params){
     try {
-        const res = await fetch(URL);
+        const res = await fetch(URL,{credentials: 'include'});
 
         if (!res.ok) {
             throw new Error('Response isn`t ok');
@@ -271,6 +271,6 @@ async function getRecommendations(URL, params){
         sessionStorage.setItem('paramsList', JSON.stringify(params));
         window.location.href = 'recommendations.html';
     } catch (error) {
-        console.error('Error while fetching map data:', error);
+        console.error('Error while fetching recommendation data:', error);
     }
 }

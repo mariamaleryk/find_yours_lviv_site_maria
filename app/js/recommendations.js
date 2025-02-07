@@ -4,16 +4,18 @@ document.addEventListener("DOMContentLoaded", function () {
     recommendations = JSON.parse(recommendations);
     const type = recommendations[0].message;
 
-    if(type === 'place'){
+    if (type === 'place') {
         const container = document.getElementById("title");
         container.innerText = "Рекомендовані заклади";
         const random = document.getElementsByClassName("random")[0];
+        random.classList.add('option');
         random.innerHTML = "Випадковий вибір <br> закладу";
     }
-    if(type === 'location'){
+    if (type === 'location') {
         const container = document.getElementById("title");
         container.innerText = "Рекомендовані локації";
         const random = document.getElementsByClassName("random")[0];
+        random.classList.add('option');
         random.innerHTML = "Випадковий вибір <br> локації";
     }
 
@@ -48,7 +50,7 @@ function displayRecommendations(recommendations, type) {
     recommendations.forEach((recommendation) => {
 
         const card = document.createElement("div");
-        card.className = 'place';
+        card.className = 'card';
 
         const row = document.createElement("div");
         row.className = 'row p-0';
@@ -86,7 +88,7 @@ function displayRecommendations(recommendations, type) {
 
         if (type === "place") {
             name.id = recommendation.loc_id;
-
+            name.classList.add(type);
             const cuisine = document.createElement("div");
             cuisine.className = 'icon';
 
@@ -107,6 +109,7 @@ function displayRecommendations(recommendations, type) {
             content.appendChild(cuisine);
         } else {
             name.id = recommendation.place_id;
+            name.classList.add(type);
             const district = document.createElement("div");
             district.className = 'icon';
 
@@ -255,16 +258,12 @@ function displayBudgets(params, container) {
 $(document).ready(function () {
     $(".button").click(function () {
         const id = $(this).attr("id");
-
-        let recommendations = sessionStorage.getItem("recommendationsList");
-        recommendations = JSON.parse(recommendations);
-        const type = recommendations[0].message;
-
+        const type = $(this).attr("class").split(" ")[1];
         placeOrLocation(type, id);
     })
 })
 
-function placeOrLocation(type, id){
+function placeOrLocation(type, id) {
     let URL = '';
     if (type === 'place') {
         URL = `http://localhost:8080/api/places/id/${id}`;
@@ -278,9 +277,9 @@ function placeOrLocation(type, id){
     }
 }
 
-async function getPlace(URL){
+async function getPlace(URL) {
     try {
-        const res = await fetch(URL);
+        const res = await fetch(URL, {credentials: 'include'});
 
         if (!res.ok) {
             throw new Error('Response isn`t ok');
@@ -294,9 +293,9 @@ async function getPlace(URL){
     }
 }
 
-async function getLocation(URL){
+async function getLocation(URL) {
     try {
-        const res = await fetch(URL);
+        const res = await fetch(URL, {credentials: 'include'});
 
         if (!res.ok) {
             throw new Error('Response isn`t ok');

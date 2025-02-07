@@ -51,6 +51,7 @@ document.querySelectorAll('nav ul li a').forEach(anchor => {
         });
     });
 });
+
 $(document).ready(function () {
     $(".owl-carousel").owlCarousel({
         items: 1,         // Тільки один слайд за раз

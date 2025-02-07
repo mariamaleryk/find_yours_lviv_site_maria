@@ -1,0 +1,76 @@
+@use "mixins";
+
+h1 {
+  @include mixins.font-dela-medium;
+  margin: 5vw 0 5vw 10vw;
+  text-transform: uppercase;
+}
+
+.info {
+  margin: 0 10vw;
+  display: flex;
+  justify-content: center;
+
+  .column {
+    display: flex;
+    flex-direction: column;
+    gap: 2vw;
+  }
+
+  .field {
+    border-radius: 2vw;
+    background-color: #ffffff;
+    border: 0.2vw solid #575757;
+
+    margin: 0;
+    width: 35vw;
+    align-items: center;
+  }
+
+  p {
+    @include mixins.font-montserrat-medium;
+    color: #575757;
+    padding: 1vw;
+    margin: 0;
+  }
+}
+
+.password-field {
+  display: flex;
+  align-items: center;
+
+  img {
+    height: 3vw;
+    cursor: pointer;
+    margin-left: 15vw;
+  }
+}
+
+.repeating-text {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  font-size: 3.5vw;
+  font-family: 'Dela Gothic One', sans-serif;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 0.35vw;
+  padding: 5vw 0 2vw 0;
+  overflow: hidden;
+}
+
+.outline {
+  -webkit-text-stroke: 0.05vw #4C7839;
+  color: #ffffff;
+}
+
+.filled {
+  color: #4C7839;
+  font-weight: bold;
+}
+
+.log-out{
+  height: 50px;
+  margin: 5vw 0 5vw 10vw;
+}

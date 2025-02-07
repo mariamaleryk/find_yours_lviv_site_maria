@@ -1,6 +1,6 @@
 //button for random (button is fixed in the bottom right corner and above footer)
 $(document).ready(function () {
-    const button = document.querySelector(".option.random");
+    const button = document.querySelector(".random");
     const footer = document.querySelector("footer");
 
     function updateButtonPosition() {
@@ -25,7 +25,7 @@ $(document).ready(function () {
 
 $(document).ready(() => {
     const randomButton = document.querySelector(".random"); // Знаходимо кнопку
-    const places = document.querySelectorAll(".place"); // Знаходимо всі заклади
+    const places = document.querySelectorAll(".card"); // Знаходимо всі заклади
     let previousRandomIndex = null; // Змінна для відстеження попереднього вибору
 
     randomButton.addEventListener("click", () => {

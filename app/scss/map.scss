@@ -1,9 +1,196 @@
-.container-fluid {
-  margin: 0 auto;
-  padding: 7.7vw 0 0 0;
+@use "mixins";
+
+body {
+  margin: 0;
+  padding: 0;
   overflow-x: hidden;
+  height: 100%;
+  width: 100%;
+  scroll-behavior: smooth;
 }
+
+.container-fluid {
+  padding: 7vw 0 0 0;
+  margin: 0;
+  width: 100%;
+}
+
 #map {
   height: 42vw;
   width: 100%;
+  z-index: 0;
+}
+
+.leaflet-control-layers{
+  margin-top: 1.5vw !important;
+}
+
+.leaflet-control-layers-overlays:hover {
+  span {
+    cursor: pointer;
+  }
+}
+
+.leaflet-control-layers-group-name {
+  font-weight: bold;
+  margin-bottom: .2em;
+  margin-left: 3px;
+}
+
+.leaflet-control-layers {
+  background: #4c7839 !important;
+  color: #fff !important;
+  border-radius: .8em !important;
+  padding: 1vw !important;
+  font-size: 0.85rem !important;
+}
+
+.icons {
+  width: 25px;
+  height: 30px;
+  margin-right: 1vw;
+}
+
+.cards {
+  padding: 1.5vw 0 0 0;
+  z-index: 1;
+  position: relative;
+
+  .place-card {
+    padding: 1vw;
+    margin: 0 1vw 1vw 0;
+    margin-left: auto !important;
+    background-color: #4C7839;
+    border-radius: 2vw;
+    ///////////////////////////////////
+    box-shadow: 0 -1vw -1vw rgba(0, 0, 0, 0.1);
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    position: relative;
+  }
+
+  /* Close button */
+  .close-button {
+    position: absolute;
+    right: 1vw;
+    top: 1vw;
+    cursor: pointer;
+    z-index: 3;
+
+    img {
+      width: 2vw;
+      height: 2vw;
+    }
+  }
+
+  /* Card content */
+  .photo {
+    img{
+      width: 100%;
+      height: 100%;
+    }
+    height: 14vw;
+    width: 100%;
+    border-radius: 1.5vw;
+    object-fit: cover;
+  }
+}
+
+.col-6 {
+  padding: 0;
+}
+
+.ph {
+  padding: 0 1vw;
+  z-index: 0;
+}
+
+.card-content {
+  padding: 2vw 1vw 0 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  font-weight: 400;
+  color: #fff;
+  text-align: left;
+
+  h2 {
+    font-family: "Unbounded", sans-serif;
+    font-size: 1.4vw;
+    letter-spacing: 0.2vw;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    overflow: hidden;
+  }
+
+  span {
+    @include mixins.font-montserrat-small;
+    letter-spacing: 0.15vw;
+    font-size: 1vw;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    overflow: hidden;
+  }
+}
+
+.icon {
+  display: flex;
+  align-items: center;
+  margin: 0.25vw 0.25vw 0.25vw 0;
+
+  svg {
+    width: 1.7vw;
+    height: 1.7vw;
+    margin-right: 1vw;
+    min-width: 1.7vw;
+    min-height: 1.7vw;
+  }
+}
+
+.like-icon svg {
+  backdrop-filter: blur(.05vw);
+  bottom: 1vw;
+  cursor: pointer;
+  height: 3.5vw;
+  margin: .5vw;
+  position: absolute;
+  right: 17vw;
+  width: 3.5vw;
+  z-index: 200;
+}
+
+.like-icon svg path:nth-of-type(2) {
+  transition: fill 0.3s ease;
+}
+
+.like-icon svg:hover path:nth-of-type(2) {
+  fill: rgba(255, 255, 255, 1);
+}
+
+.button{
+  cursor: pointer;
+}
+
+.button:hover{
+  text-decoration: underline;
+}
+
+.cards-container {
+  position: absolute;
+  right: 0;
+  top: 6.5vw;
+  display: flex;
+  flex-direction: column;
+  gap: 4vw;
+  overflow-y: unset;
+  max-height: 42.5vw;
+  margin-right: 0.5vw;
+
+  .cards {
+    margin-right: 1vw !important;
+  }
 }

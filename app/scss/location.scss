@@ -10,7 +10,7 @@ body {
 }
 
 .container-fluid {
-  padding: 6vw 0;
+  padding: 5.6vw 0;
   margin: 0;
   background-image: url("../icons/long-line.svg");
   background-repeat: no-repeat, no-repeat;
@@ -38,9 +38,8 @@ body {
 
 .responsive-img {
   width: 100%;
-  height: auto;
+  height: 100%;
   object-fit: cover;
-  //object-position: center;
 }
 
 .button {
@@ -88,12 +87,11 @@ body {
 
 .header1 {
   text-align: center;
-  height: 10vw;
+  //height: 10vw;
 
   h1 {
     @include mixins.font-montserrat-bold;
-    margin: 0;
-    padding: 2vw 15vw;
+    margin: 2vw 15vw;
   }
 }
 
@@ -134,11 +132,14 @@ body {
 
 .description p {
   @include mixins.font-montserrat-regular;
-  margin: 3vw 5vw;
+  background-color: rgba(255, 255, 255, 0.9);
+  border-radius: 2vw;
+  margin: 2vw 4vw;
   text-align: justify;
-  padding: 0;
+  padding: 1vw;
 }
 
 #map {
-  height: 450px;
+  height: 35vw;
+  z-index: 0;
 }
