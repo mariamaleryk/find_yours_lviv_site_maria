@@ -36,3 +36,24 @@
 .hidden {
   display: none;
 }
+.scroller {
+  display: flex;
+  overflow-x: scroll; /* Включаємо горизонтальний скрол */
+  scroll-snap-type: x mandatory; /* Опціонально для плавного скролінгу */
+}
+
+/* Стилі для лінії прокрутки */
+.scroller::-webkit-scrollbar {
+  width: 8px; /* Ширина скролбару */
+}
+
+/* Прокрутка без кольору (прозора) */
+.scroller::-webkit-scrollbar-track {
+  background: transparent; /* Прозорий фон для "доріжки" прокрутки */
+}
+
+/* Стилі для самого скролбару */
+.scroller::-webkit-scrollbar-thumb {
+  background-color: transparent; /* Прозорий скролбар */
+  border-radius: 10px; /* Заокруглення для скролбару */
+}

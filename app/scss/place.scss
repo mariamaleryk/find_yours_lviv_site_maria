@@ -47,7 +47,7 @@ $green-main: #4c7839;
   background-repeat: no-repeat;
   background-size: contain;
   width: 100%;
-  background-position: top 60vh center;
+  background-position: top 28vw center;
 }
 
 
@@ -252,14 +252,23 @@ $green-main: #4c7839;
 .rest-contact {
   margin: 3% 0;
   color: black;
-
+  justify-content: space-between;
+  flex-wrap: wrap;
+.connect-right{
+  text-align: right ;
+}
   a {
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 1;
+    overflow: hidden;
+    display: -webkit-box;
+    //flex-direction: column;
     font-family: "Montserrat", sans-serif;
     font-size: 1.5vw;
     color: black;
     text-decoration: none;
-    word-wrap: break-word; /*переносить на інший рядок як текст задовгий для контейнера*/
-    overflow-wrap: break-word; /* забезпечує сумісність з більш старими браузерами якшо функція вище не спрацювала :)*/
+    //word-wrap: break-word; /*переносить на інший рядок як текст задовгий для контейнера*/
+    overflow-wrap: break-word; /* забезпечує сумісність з більш старими браузерами якшо функція вище не спрацювала */
   }
 
   .connect-1 {
@@ -274,7 +283,7 @@ $green-main: #4c7839;
 
 #map {
   margin: 4vw 0;
-  height: 35vw;
+  height: 30vw;
 }
 @media (min-width: 992px){
   .photo-rest .like-icon{
@@ -342,8 +351,35 @@ $green-main: #4c7839;
   }
   .rest-description {
     margin-top: 6vw;
-    font-size: 2.5vw;
+    font-size: 3vw;
     letter-spacing: 0.1em;
-    line-height: 5vw;
+    line-height: 5.5vw;
+  }
+  .rest-contact .connect-1{
+    font-size:3.5vw;
+    margin-bottom: 1vw;
+  }
+  .rest-contact a{
+    font-size:3.3vw;
+  }
+  .connect-right{
+    text-align: left!important;
+  }
+  .rest-contact{
+    gap: 6vw;
+  }
+  .bottom-line{
+    background-position:bottom 36vw  center;
+  }
+  .scroller{
+    margin-top: 1vw;
+  }
+  .scroller img{
+    width: 35vw;
+    height: 40vw;
+    border-radius: 5vw;
+  }
+  .arrow-button{
+    display: none;
   }
 }
