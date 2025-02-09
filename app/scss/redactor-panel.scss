@@ -202,7 +202,8 @@ body {
   }
 
   #add-photo,
-  #submit {
+  #submit
+  {
     @include mixins.font-montserrat-regular;
     background: #4c7839;
     color: white;
@@ -211,4 +212,11 @@ body {
     border-radius: 2vw;
     cursor: pointer;
   }
+}
+
+.form-content {
+  display: none;
+}
+.form-content.active {
+  display: block;
 }
