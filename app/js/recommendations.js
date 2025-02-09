@@ -4,14 +4,14 @@ document.addEventListener("DOMContentLoaded", function () {
     recommendations = JSON.parse(recommendations);
     const type = recommendations[0].message;
 
-    if(type === 'place'){
+    if (type === 'place') {
         const container = document.getElementById("title");
         container.innerText = "Рекомендовані заклади";
         const random = document.getElementsByClassName("random")[0];
         random.classList.add('option');
         random.innerHTML = "Випадковий вибір <br> закладу";
     }
-    if(type === 'location'){
+    if (type === 'location') {
         const container = document.getElementById("title");
         container.innerText = "Рекомендовані локації";
         const random = document.getElementsByClassName("random")[0];
@@ -263,7 +263,7 @@ $(document).ready(function () {
     })
 })
 
-function placeOrLocation(type, id){
+function placeOrLocation(type, id) {
     let URL = '';
     if (type === 'place') {
         URL = `http://localhost:8080/api/places/id/${id}`;
@@ -277,9 +277,9 @@ function placeOrLocation(type, id){
     }
 }
 
-async function getPlace(URL){
+async function getPlace(URL) {
     try {
-        const res = await fetch(URL);
+        const res = await fetch(URL, {credentials: 'include'});
 
         if (!res.ok) {
             throw new Error('Response isn`t ok');
@@ -293,9 +293,9 @@ async function getPlace(URL){
     }
 }
 
-async function getLocation(URL){
+async function getLocation(URL) {
     try {
-        const res = await fetch(URL);
+        const res = await fetch(URL, {credentials: 'include'});
 
         if (!res.ok) {
             throw new Error('Response isn`t ok');

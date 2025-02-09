@@ -3913,7 +3913,7 @@
     isAnimated: false,
     isVisible: true,
     // if false, we use the backdrop helper without adding any element to the dom
-    rootElement: 'body' // give the choice to place.html backdrop under different elements
+    rootElement: 'body' // give the choice to login.html backdrop under different elements
   };
   const DefaultType$8 = {
     className: 'string',

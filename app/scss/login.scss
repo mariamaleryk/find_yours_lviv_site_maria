@@ -1,0 +1,284 @@
+.container {
+  max-width: 25em;
+  padding: 2em;
+  position: absolute;
+  top: 55%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border-radius: 1.5em;
+  box-shadow: inset 0 4px 4px 0 rgba(0, 0, 0, 0.25);
+  background: rgba(217, 217, 217, 0.9);
+  backdrop-filter: blur(20em);
+
+  .registration {
+    display: none;
+  }
+}
+
+#check {
+  display: none;
+}
+
+.form {
+  display: none;
+}
+
+#check:checked + .login.form {
+  display: none;
+}
+
+#check:checked + .login.form + .registration.form {
+  display: block;
+}
+
+#check:not(:checked) + .login.form {
+  display: block;
+}
+
+#check:not(:checked) + .login.form + .registration.form {
+  display: none;
+}
+
+.form {
+  font-family: "Montserrat Alternates", sans-serif;
+
+  header {
+    font-size: 2em;
+    font-weight: 500;
+    text-align: center;
+    margin-bottom: 0.5em;
+    letter-spacing: 0.12em;
+
+  }
+
+  input {
+    width: 100%;
+    height: 3em;
+    font-size: 1em;
+    padding-right: 3.5em;
+    padding-left: 0.6em;
+    margin-bottom: 1em;
+    border-radius: 2em;
+    outline: none;
+    border: none;
+    box-shadow: inset 0.1em 0.3em 0.3em 0.3em rgba(0, 0, 0, 0.25), inset 0 4px 4px 0 rgba(0, 0, 0, 0.25);
+    background: #d9d9d9;
+  }
+
+  input.button {
+    box-shadow: none;
+    border: 0.2em solid #4c7839;
+    cursor: pointer;
+    color: #fff;
+    background-color: rgba(76, 120, 32, 0.7);
+    font-weight: 600;
+    margin-top: 1.5em;
+    transition: 0.4s;
+    letter-spacing: 0.2em;
+  }
+
+  input.button:hover {
+    background-color: #4c7839;
+  }
+
+  input:focus {
+    box-shadow: inset 0 4px 4px 0 rgba(0, 0, 0, 0.25), 0 0.5em 0.5em rgba(0, 0, 0, 0.3);
+
+  }
+
+  .button-green{
+    @extend input;
+    padding:0;
+    text-align: center;
+  }
+
+  a {
+    font-family: "Montserrat", sans-serif;
+    font-size: 1em;
+    color: #4c7839;
+    text-decoration: none;
+  }
+
+  a:hover {
+    text-decoration: underline;
+  }
+}
+
+.input-box {
+  display: flex;
+
+  button {
+    position: absolute;
+    right: 1.5em;
+    font-size: 1.8em;
+    border: none;
+    background-color: transparent;
+    align-self: center;
+    transform: translateY(-20%);
+  }
+}
+
+.signup {
+  text-align: center;
+  font-size: 1em;
+
+  label {
+    color: #4c7839;
+    font-weight: bold;
+    cursor: pointer;
+  }
+
+  label:hover {
+    text-decoration: underline;
+  }
+}
+
+.message {
+  display: none;
+  margin: 0;
+  font-size: 12px;
+}
+
+.invalid {
+  color: red;
+}
+
+.valid {
+  color: green;
+}
+
+.error {
+  color: red;
+  display: none;
+}
+
+button, input[type="submit"] {
+  cursor: pointer;
+}
+//для того щоб приховати око яке встановлюється за замовчуванням типом password
+//input[type="password"]::-webkit-input-placeholder {
+//  -webkit-appearance: none; /* Для Chrome */
+//  -moz-appearance: none; /* Для Firefox */
+//  appearance: none; /* Для інших браузерів */
+//}
+//input[type="password"]::-ms-reveal, /* Для Internet Explorer */
+//input[type="password"]::-webkit-visibility-icon, /* Для Chrome, Safari */
+//input[type="password"]::-webkit-clear-button, /* Для Chrome */
+//input[type="password"]::-webkit-search-cancel-button, /* Для Chrome */
+//input[type="password"]::-webkit-search-clear-button, /* Для Chrome */
+//input[type="password"]::-webkit-input-placeholder {
+//  -webkit-appearance: none;
+//  appearance: none;
+//  display: hid;
+//}
+//input[type="password"]::-ms-reveal,  /* Для Internet Explorer */
+//input[type="password"]::-webkit-credentials-auto-fill-button,
+//input[type="password"]::-webkit-appearance: none;
+
+.gsi-material-button {
+  -moz-user-select: none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
+  -webkit-appearance: none;
+  //background-color: #f2f2f2;
+  background-color: rgba(217, 217, 217, 0.9);
+  background-image: none;
+  border: none;
+  -webkit-border-radius: 20px;
+  border-radius: 20px;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  color: #1f1f1f;
+  cursor: pointer;
+  font-family: 'Roboto', arial, sans-serif;
+  font-size: 14px;
+  height: 40px;
+  letter-spacing: 0.25px;
+  outline: none;
+  overflow: hidden;
+  padding: 0 12px;
+  position: relative;
+  text-align: center;
+  -webkit-transition: background-color .218s, border-color .218s, box-shadow .218s;
+  transition: background-color .218s, border-color .218s, box-shadow .218s;
+  vertical-align: middle;
+  white-space: nowrap;
+  width: 100%;
+  max-width: 400px;
+  min-width: min-content;
+}
+
+.gsi-material-button .gsi-material-button-icon {
+  height: 20px;
+  margin-right: 12px;
+  min-width: 20px;
+  width: 20px;
+}
+
+.gsi-material-button .gsi-material-button-content-wrapper {
+  -webkit-align-items: center;
+  align-items: center;
+  display: flex;
+  -webkit-flex-direction: row;
+  flex-direction: row;
+  -webkit-flex-wrap: nowrap;
+  flex-wrap: nowrap;
+  height: 100%;
+  justify-content: space-between;
+  position: relative;
+  width: 100%;
+}
+
+.gsi-material-button .gsi-material-button-contents {
+  -webkit-flex-grow: 1;
+  flex-grow: 1;
+  font-family: 'Roboto', arial, sans-serif;
+  font-weight: 500;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  vertical-align: top;
+}
+
+.gsi-material-button .gsi-material-button-state {
+  -webkit-transition: opacity .218s;
+  transition: opacity .218s;
+  bottom: 0;
+  left: 0;
+  opacity: 0;
+  position: absolute;
+  right: 0;
+  top: 0;
+}
+
+.gsi-material-button:disabled {
+  cursor: default;
+  background-color: #ffffff61;
+}
+
+.gsi-material-button:disabled .gsi-material-button-state {
+  background-color: #1f1f1f1f;
+}
+
+.gsi-material-button:disabled .gsi-material-button-contents {
+  opacity: 38%;
+}
+
+.gsi-material-button:disabled .gsi-material-button-icon {
+  opacity: 38%;
+}
+
+.gsi-material-button:not(:disabled):active .gsi-material-button-state,
+.gsi-material-button:not(:disabled):focus .gsi-material-button-state {
+  background-color: #001d35;
+  opacity: 12%;
+}
+
+.gsi-material-button:not(:disabled):hover {
+  -webkit-box-shadow: 0 1px 2px 0 rgba(60, 64, 67, .30), 0 1px 3px 1px rgba(60, 64, 67, .15);
+  box-shadow: 0 1px 2px 0 rgba(60, 64, 67, .30), 0 1px 3px 1px rgba(60, 64, 67, .15);
+}
+
+.gsi-material-button:not(:disabled):hover .gsi-material-button-state {
+  background-color: #001d35;
+  opacity: 8%;
+}

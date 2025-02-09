@@ -54,7 +54,7 @@ async function getMapData() {
     const URL = 'http://localhost:8080/api/getMapData'
 
     try {
-        const res = await fetch(URL);
+        const res = await fetch(URL,{credentials: 'include'});
 
         if (!res.ok) {
             throw new Error('Error while fetching map data');
@@ -309,7 +309,7 @@ function placeOrLocation(type, id){
 
 async function getPlace(URL){
     try {
-        const res = await fetch(URL);
+        const res = await fetch(URL,{credentials: 'include'});
 
         if (!res.ok) {
             throw new Error('Response isn`t ok');
@@ -325,7 +325,7 @@ async function getPlace(URL){
 
 async function getLocation(URL){
     try {
-        const res = await fetch(URL);
+        const res = await fetch(URL,{credentials: 'include'});
 
         if (!res.ok) {
             throw new Error('Response isn`t ok');

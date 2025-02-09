@@ -4,13 +4,12 @@ h1 {
   @include mixins.font-dela-medium;
   margin: 5vw 0 5vw 10vw;
   text-transform: uppercase;
-
 }
 
 .info {
   margin: 0 10vw;
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
 
   .column {
     display: flex;
@@ -71,4 +70,7 @@ h1 {
   font-weight: bold;
 }
 
-
+.log-out{
+  height: 50px;
+  margin: 5vw 0 5vw 10vw;
+}

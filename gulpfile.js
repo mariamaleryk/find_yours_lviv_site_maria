@@ -49,7 +49,6 @@ gulp.task('uglify', () => {
         .pipe(dest('dist/js'))
 });
 
-
 // Include html files together
 gulp.task('html', () => {
     return src([
@@ -95,12 +94,11 @@ gulp.task('watch', () => {
     gulp.watch('app/icons/**/*', gulp.series('icons'));
 });
 
-
 // Update browser
 gulp.task('browser-sync', () => {
     browserSync.init({
         server: {
-            baseDir: './dist',
+            baseDir: './dist'
         }
     });
     gulp.watch('./dist').on('change', browserSync.reload);
