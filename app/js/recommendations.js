@@ -356,3 +356,6 @@ const districtIcons = {
     'Личаківський': "../../icons/districts/lychakivskiy.svg",
     'Залізничний': "../../icons/districts/zaliznychniy.svg"
 };
+
+
+

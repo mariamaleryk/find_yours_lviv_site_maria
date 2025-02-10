@@ -62,7 +62,8 @@ footer {
       font-family: 'Dela Gothic One', sans-serif;
       font-size: 1.3vw;
       letter-spacing: 0.3vw;
-      margin-bottom: 5vh;
+      //margin-bottom: 5vh;
+      margin-bottom: 1.5vw;
     }
 
     a {
@@ -71,7 +72,7 @@ footer {
       color: white;
     }
 
-    .nav-bottom {
+    .nav-bottom, .nav-bottom-mob {
       display: flex;
       font-family: 'Montserrat Alternates', sans-serif;
       font-size: 1vw;
@@ -79,3 +80,10 @@ footer {
     }
   }
 }
+
+@media (min-width: 959px) and (max-width: 2560px) {
+  .footer-mob {
+    display: none;
+  }
+}
+
