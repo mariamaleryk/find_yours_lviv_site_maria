@@ -28,8 +28,6 @@ async function getUser() {
     }
 }
 
-getUser();
-
 function renderUser(user){
     const emailContainer = document.getElementById('email');
     emailContainer.innerHTML = user.email;
@@ -40,3 +38,50 @@ function renderUser(user){
     const lastNameContainer = document.getElementById('lastName');
     lastNameContainer.innerHTML = user.lastname;
 }
+
+function showSettings(){
+    const settingsButton = document.getElementById('settingsButton');
+    const profileSettings = document.getElementById('profileSettings');
+    settingsButton.addEventListener('click', e => {
+        const profileSettingsState = profileSettings.style.display;
+
+        if(profileSettingsState === 'block'){
+            profileSettings.style.display = 'none';
+        }else{
+            profileSettings.style.display = 'block';
+        }
+    })
+}
+
+function updateFirstName(){
+    document.getElementById('updateFirstNameForm').addEventListener('submit',(evt)=>{
+        evt.preventDefault();
+        const newFirstName = document.getElementById('newFirstName').value;
+        console.log(newFirstName);
+    })
+}
+
+function updateLastName(){
+    document.getElementById('updateLastNameForm').addEventListener('submit',(evt)=>{
+        evt.preventDefault();
+        const newLastName = document.getElementById('newLastName').value;
+        console.log(newLastName);
+    })
+}
+
+function deleteProfile(){
+    document.getElementById('deleteProfile').addEventListener('click',()=>{
+        alert('are you sure?');
+    });
+}
+
+function handleProfileUpdate() {
+    updateFirstName();
+    updateLastName();
+    deleteProfile();
+}
+
+getUser();
+showSettings();
+handleProfileUpdate();
+
