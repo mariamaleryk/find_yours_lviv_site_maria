@@ -4,7 +4,7 @@ const leftArrow = document.querySelector('.left-arrow');
 const rightArrow = document.querySelector('.right-arrow');
 
 // Amount to scroll per button click
-const scrollAmount = 500; // Adjust for your layout
+const scrollAmount = 900; // Adjust for your layout
 
 // Scroll left
 leftArrow.addEventListener('click', () => {

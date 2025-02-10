@@ -8,6 +8,7 @@ async function updateLoginState() {
     }
 
     const button = document.getElementById("login-btn");
+    const footerProfileButton = document.getElementById('footerProfileButton');
 
     function handleClick() {
         if(isLoggedIn){
@@ -32,6 +33,9 @@ async function updateLoginState() {
         } else {
             button.innerText = 'Вийти';
         }
+        footerProfileButton.addEventListener('click', ()=>{
+            window.location.href = '../html/user-profile.html';
+        });
     } else {
         if (!document.URL.includes('login.html')) {
             button.innerText = 'Увійти';
@@ -41,7 +45,11 @@ async function updateLoginState() {
             registerValidation();
             loginValidation();
         }
+        footerProfileButton.addEventListener('click', ()=>{
+            window.location.href = '../html/login.html';
+        });
     }
+
 }
 
 async function isLogged() {

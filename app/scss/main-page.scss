@@ -1,5 +1,7 @@
 @use "mixins";
-
+//.row > * {
+//  width: auto;
+//}
 .container-fluid {
   margin: 0 auto;
   padding: 7vw 0 0 0;
@@ -25,8 +27,12 @@
   }
 
   .main-button {
+    gap: 1vw;
+    // justify-content: center;
+    flex-wrap: nowrap;
 
     a {
+
       h3 {
         font-weight: 400;
         font-size: 2vw;
@@ -45,34 +51,36 @@
       text-decoration: none;
       letter-spacing: 0.2em;
       text-align: center;
-      color: black;
+      //color: black; не пам'ятаю звідки цей колір
+
     }
 
     .main-titles {
-      width: 16vw;
+      //width: 16vw;
       border-radius: 0.8em;
       background-color: #4c7839;
       box-shadow: 0 10px 17px 0 #33442c;
-      margin: 0;
-      padding: 1vw;
+      //margin: 0;
+      //margin: 1vw 3vw 1vw 2vw;
       position: relative;
+      padding: 1vw 0 1vw 0;
       z-index: 1;
       align-content: center;
 
     }
 
     .main-description {
-
       padding: 4vw 1vw 1vw;
       border-radius: 2vw;
-      height: 30vh;
+      //height: 30vh;
       // width: auto;
+
       text-align: center;
       align-content: center;
-
+      height: 85%;
       box-shadow: inset 0 10px 17px 0 #465f3c;
       background: rgba(76, 120, 57, 0.8);
-      margin-top: -3vw; /*  щоб блок "зайшов" під .main-titles */
+      margin-top: -4vw; /*  щоб блок "зайшов" під .main-titles */
       position: relative;
       z-index: 0;
     }
@@ -93,6 +101,7 @@
   }
 }
 
+
 .top {
   img {
     width: 100%;
@@ -101,7 +110,7 @@
 }
 
 .about-us {
-  margin-top: 13vh;
+  margin-top: 3vw;
   margin-right: 1vw;
   //margin-left: 2vw;
   //display: flex;
@@ -125,6 +134,7 @@
     font-weight: 600;
     font-family: "Dela Gothic One", sans-serif;
   }
+
   p {
     padding: 2vw 0 0 0;
     font-size: 1.45vw;
@@ -134,8 +144,10 @@
 
   }
 }
-.user-rec{
+
+.user-rec {
   padding: 0 0 5vw 0;
+
   .repeating-text {
     display: flex;
     width: 100%;
@@ -148,29 +160,32 @@
     white-space: nowrap;
   }
 
-  .outline-green{
+  .outline-green {
     -webkit-text-stroke: 0.01vw #4C7839;
     color: #ffffff;
   }
 
-  .outline-black{
+  .outline-black {
     -webkit-text-stroke: 0.01vw #000000;
     color: #ffffff;
   }
 
-  .filled-black{
+  .filled-black {
     font-weight: bold;
     color: #000000;
   }
 
-  .filled-green{
+  .filled-green {
     font-weight: bold;
     color: #4C7839;
   }
 }
 
 .recommended {
+
   .item {
+    //justify-content: right;
+    //display: flex;
     h2 {
       font-family: "Unbounded", sans-serif;
       font-size: 3em;
@@ -184,10 +199,15 @@
       display: flex !important;
     }
 
+    //display: block;
     .card-body {
+
+      align-content: center;
       padding: 1vw;
       background-color: #4C7839;
       width: 20vw;
+      height: 10vw;
+      max-height: 15em;
       border-radius: 0 0 2em 2em;
 
       .small-icon {
@@ -205,36 +225,58 @@
       .card-title {
         font-family: "Unbounded", sans-serif;
         font-weight: 400;
-        font-size: 1.2em;
-        line-height: 1.5em;
+        font-size: 1.2vw;
+        line-height: 1.5vw;
         letter-spacing: 0.1em;
         color: #fff;
         display: -webkit-box;
         -webkit-box-orient: vertical;
         -webkit-line-clamp: 2;
         overflow: hidden;
+        margin-bottom: 0.5vw;
       }
 
       .card-text {
-        margin: 0 0 0 0.5em;
+        margin: 0 0 0 0.5vw;
         font-weight: 400;
-        font-size: 0.7em;
+        font-size: 1vw;
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
         -webkit-line-clamp: 1;
+        overflow: hidden;
+
         letter-spacing: 0.2em;
         color: #fff;
       }
     }
 
+    overflow: visible;
+
     .p-r {
+      margin-top: 2vw;
+      padding-bottom: 1em;
       display: flex;
       justify-content: center;
+      transition: transform 0.3s ease;
+      transform-origin: center;
+      box-sizing: border-box;
     }
+
+    .p-r:hover {
+      transform: scale(1.05); /* Збільшуємо блок на 10% */
+    }
+
+    //.rec-photo-like{
+    //  position:relative;
+    //}
 
     img {
       border-radius: 2em 2em 0 0;
       width: 20vw;
+      max-width: 20vw;
       object-fit: cover;
-      height: 15em;
+      height: 14em;
+      //max-height: 13vw;
     }
 
     .mb-4 {
@@ -243,7 +285,7 @@
   }
 
   .arrow-button {
-    margin-top: 5vh;
+    //margin-top:0.5vw;
     position: absolute;
     top: 100%;
     transform: translateY(-100%);
@@ -259,6 +301,11 @@
     right: 2.5vw;
   }
 
+  .recom-photo {
+    position: relative !important;
+
+  }
+
 }
 
 .owl-carousel .owl-stage {
@@ -266,7 +313,51 @@
 }
 
 
-//Марія дописала
 .item {
   margin: 0 5vw;
 }
+
+.like-icon svg {
+  width: 3.5vw;
+  height: 3.5vw;
+  position: absolute;
+  //bottom: 10vw;
+  transform: translateY(-150%);
+  right: 0;
+  margin: 1vw;
+  z-index: 200;
+  cursor: pointer;
+  backdrop-filter: blur(0.09vw);
+}
+
+.like-icon svg path {
+  // fill: rgba(0, 0, 0, 1); /* Початковий колір */
+  transition: fill 0.3s ease; /* Плавний перехід */
+}
+
+/* Колір при наведенні */
+.like-icon svg:hover path {
+  fill: rgba(255, 255, 255, 1); /* Білий колір при наведенні */
+}
+
+/* Колір при натисканні */
+.like-icon svg:active path {
+  fill: rgba(255, 255, 255, 1); /* Білий колір при натисканні */
+}
+
+/* Колір іконки, коли вона вже була натиснута (за допомогою класу) */
+.like-icon.clicked svg path {
+  fill: rgba(255, 255, 255, 1); /* Білий колір після натискання */
+}
+
+@media (min-width: 1440px) and (max-width: 2560px) {
+  .recommended .item img {
+    height: 18vw;
+  }
+  .recommended .item .card-body .small-icon img{
+    height: 1.2em;
+    width: 1.2em;
+  }
+}
+
+
