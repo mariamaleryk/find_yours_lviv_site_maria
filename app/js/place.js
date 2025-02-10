@@ -18,8 +18,8 @@ document.addEventListener('DOMContentLoaded', function () {
     h5.className = "place";
     h5.textContent = place.district;
 
-    name_and_district.appendChild(h1);
-    name_and_district.appendChild(h5);
+    name_and_district.prepend(h5);
+    name_and_district.prepend(h1);
 
     const type = document.getElementById("place-type");
     type.textContent = place.type_name;
@@ -57,7 +57,7 @@ document.addEventListener('DOMContentLoaded', function () {
     phone.href = `tel:${place.phone ? place.phone.join(', ') : 'немає'}`;
     phone.innerHTML = place.phone ? place.phone.join(', ') : 'немає';
 
-    const link = document.querySelector(".text-end a");
+    const link = document.getElementById('link');
     link.target = "_blank";
     link.href = place.website_link;
     link.textContent = place.website_link || "немає";
