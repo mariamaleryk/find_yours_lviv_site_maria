@@ -17,12 +17,6 @@ h1 {
     gap: 2vw;
   }
 
-  .my-row {
-    display: flex;
-    flex-direction: row;
-    gap: 2vw;
-  }
-
   .field {
     border-radius: 2vw;
     background-color: #ffffff;
@@ -107,4 +101,9 @@ h1 {
   img{
     height: 5vw;
   }
+}
+
+.error {
+  color: red;
+  display: none;
 }

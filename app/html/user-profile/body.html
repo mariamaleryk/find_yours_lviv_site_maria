@@ -17,15 +17,16 @@
         <div class="info">
             <div class="column">
                 <form id="updateFirstNameForm">
-                    <input type="text" placeholder="Введіть нове ім'я" id="newFirstName" required>
+                    <input type="text" placeholder="Введіть нове ім'я" id="newFirstName" required autocomplete="off">
                     <input type="submit" id="updateFirstName" value="Змінити Ім'я">
                 </form>
 
                 <form id="updateLastNameForm">
-                    <input type="text" placeholder="Введіть нове прізвище" id="newLastName" required>
+                    <input type="text" placeholder="Введіть нове прізвище" id="newLastName" required autocomplete="off">
                     <input type="submit" id="updateLastName" value="Змінити Прізвище">
                 </form>
 
+                <div id="error" class="error"></div>
                 <button id="deleteProfile">Видалити профіль</button>
             </div>
         </div>

@@ -1,5 +1,4 @@
 async function getUser() {
-
     let userData = sessionStorage.getItem("userData");
 
     if (userData) {
@@ -43,6 +42,7 @@ function showSettings(){
     const settingsButton = document.getElementById('settingsButton');
     const profileSettings = document.getElementById('profileSettings');
     settingsButton.addEventListener('click', e => {
+        document.getElementById('error').style.display = 'none';
         const profileSettingsState = profileSettings.style.display;
 
         if(profileSettingsState === 'block'){
@@ -54,24 +54,129 @@ function showSettings(){
 }
 
 function updateFirstName(){
-    document.getElementById('updateFirstNameForm').addEventListener('submit',(evt)=>{
+    document.getElementById('updateFirstNameForm').addEventListener('submit',async (evt)=>{
         evt.preventDefault();
         const newFirstName = document.getElementById('newFirstName').value;
-        console.log(newFirstName);
+
+        const reqBody = new URLSearchParams({
+            "newFirstName": newFirstName.trim()
+        });
+
+        const error = document.getElementById('error');
+        try {
+            const response = await fetch('http://localhost:8080/api/user/updateFirstName',
+                {
+                    credentials: 'include',
+                    method: 'POST',
+                    body: reqBody
+                });
+
+            if (response.ok){
+                sessionStorage.removeItem("userData");
+                await getUser();
+            }
+
+            const data = await response.json();
+            const errorCode =  data.errorCode;
+            error.innerText = '';
+
+            switch (errorCode) {
+                case 1:
+                    error.innerText = 'Довжина імені немає перевищувати 25 символів.';
+                    break;
+                case 2:
+                    error.innerText = 'Неправильне ім\'я.'
+                    break;
+                case 3:
+                    error.innerText = 'Введіть ім\'я, що відрізняється від поточного.';
+                    break;
+
+            }
+            error.style.display = 'block';
+
+        }catch(err){
+            console.log("Виникла помилка під час оновлення імені.");
+            error.innerText = 'Виникла помилка під час оновлення імені.';
+            error.style.display = 'block';
+        }
     })
 }
 
 function updateLastName(){
-    document.getElementById('updateLastNameForm').addEventListener('submit',(evt)=>{
+    document.getElementById('updateLastNameForm').addEventListener('submit',async (evt)=>{
         evt.preventDefault();
         const newLastName = document.getElementById('newLastName').value;
-        console.log(newLastName);
+
+        const reqBody = new URLSearchParams({
+            "newLastName": newLastName.trim()
+        });
+
+        const error = document.getElementById('error');
+        try {
+            const response = await fetch('http://localhost:8080/api/user/updateLastName',
+                {
+                    credentials: 'include',
+                    method: 'POST',
+                    body: reqBody
+                });
+
+            if (response.ok){
+                sessionStorage.removeItem("userData");
+                await getUser();
+            }
+
+            const data = await response.json();
+            const errorCode =  data.errorCode;
+            error.innerText = '';
+
+            switch (errorCode) {
+                case 1:
+                    error.innerText = 'Довжина прізвища немає перевищувати 25 символів.';
+                    break;
+                case 2:
+                    error.innerText = 'Неправильне прізвище.'
+                    break;
+                case 3:
+                    error.innerText = 'Введіть прізвище, що відрізняється від поточного.';
+                    break;
+
+            }
+            error.style.display = 'block';
+
+        }catch(err){
+            console.log("Виникла помилка під час оновлення імені.");
+            error.innerText = 'Виникла помилка під час оновлення прізвища.';
+            error.style.display = 'block';
+        }
     })
 }
 
 function deleteProfile(){
-    document.getElementById('deleteProfile').addEventListener('click',()=>{
-        alert('are you sure?');
+    document.getElementById('deleteProfile').addEventListener('click',async ()=>{
+        const confirm = prompt("Введіть \"ПІДТВЕРДЖУЮ\", якщо Ви справді бажаєте видалити свій профіль!");
+        const error = document.getElementById('error');
+
+        if (confirm==='ПІДТВЕРДЖУЮ'){
+            try {
+                const response = await fetch('http://localhost:8080/api/user/deleteProfile',
+                    {
+                        method: 'POST',
+                        credentials: 'include'
+                    });
+
+                if (response.ok){
+                    sessionStorage.setItem("isLoggedIn", JSON.stringify(false));
+                    sessionStorage.removeItem("expiresAt");
+                    sessionStorage.removeItem("userData");
+                    window.location.href = '../index.html';
+                }
+            }catch (err){
+                console.log("Виникла помилка під час оновлення імені.");
+                error.innerText = 'Виникла помилка під час оновлення прізвища.';
+                error.style.display = 'block';
+            }
+        }
+        return;
     });
 }
 
@@ -84,4 +189,3 @@ function handleProfileUpdate() {
 getUser();
 showSettings();
 handleProfileUpdate();
-
