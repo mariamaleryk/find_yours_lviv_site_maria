@@ -39,15 +39,15 @@ async function updateLoginState() {
     } else {
         if (!document.URL.includes('login.html')) {
             button.innerText = 'Увійти';
+            footerProfileButton.addEventListener('click', ()=>{
+                window.location.href = '../html/login.html';
+            });
         } else {
             button.remove();
             googleAuth();
             registerValidation();
             loginValidation();
         }
-        footerProfileButton.addEventListener('click', ()=>{
-            window.location.href = '../html/login.html';
-        });
     }
 
 }
@@ -165,8 +165,8 @@ function registerValidation() {
         const reqBody = new URLSearchParams({
             "email": email,
             "password": password,
-            "firstName": firstname,
-            "lastName": lastname
+            "firstName": firstname.trim(),
+            "lastName": lastname.trim()
         });
 
         try {
@@ -191,13 +191,13 @@ function registerValidation() {
                     error.innerText = 'Такий користувач уже існує.';
                     break;
                 case 3:
-                    error.innerText = 'Довжина імені та прізвища немає перевищувати 25 символів';
+                    error.innerText = 'Довжина імені та прізвища немає перевищувати 25 символів.';
                     break;
             }
             error.style.display = 'block';
         } catch (err) {
             console.error('Register error:', err);
-            error.innerText = 'Виникла помилка під час обробки даних';
+            error.innerText = 'Виникла помилка під час обробки даних.';
             error.style.display = 'block';
         }
     });
