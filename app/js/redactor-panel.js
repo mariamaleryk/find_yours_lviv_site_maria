@@ -57,7 +57,13 @@ const formsData = {
             ]
         },
         {type: "textarea", name: "description", placeholder: "Опис...", required: true},
-        {type: "tel", name: "phone", placeholder: "Номери телефону...", required: true},
+        {
+            type: "fieldset",
+            legend: "Номери телефону",
+            fields: [
+                {type: "tel", name: "phone"}
+            ]
+        },
         {type: "url", name: "website_link", placeholder: "Сайт...", required: true},
         {type: "url", name: "map_link", placeholder: "Посилання на Google Maps...", required: true},
         {
@@ -121,7 +127,13 @@ const formsData = {
             ]
         },
         {type: "textarea", name: "description", placeholder: "Опис...", required: true},
-        {type: "tel", name: "phone", placeholder: "Номери телефону...", required: true},
+        {
+            type: "fieldset",
+            legend: "Номери телефону",
+            fields: [
+                {type: "tel", name: "phone"}
+            ]
+        },
         {type: "url", name: "website_link", placeholder: "Сайт...", required: true},
         {type: "url", name: "map_link", placeholder: "Посилання на Google Maps...", required: true},
         {
@@ -206,7 +218,13 @@ const formsData = {
             ]
         },
         {type: "textarea", name: "description", placeholder: "Опис...", required: true},
-        {type: "tel", name: "phone", placeholder: "Номери телефону...", required: true},
+        {
+            type: "fieldset",
+            legend: "Номери телефону",
+            fields: [
+                {type: "tel", name: "phone"}
+            ]
+        },
         {type: "url", name: "website_link", placeholder: "Сайт...", required: true},
         {type: "url", name: "map_link", placeholder: "Посилання на Google Maps...", required: true},
         {
@@ -225,12 +243,11 @@ const formsData = {
                 {type: "working-hours", name: "work_time"}
             ]
         },
-
         {
             type: "fieldset",
-            legend: "Фото",
+            legend: "Номери телефону",
             fields: [
-                {type: "text", name: "photos", placeholder: "Вставити наступне фото..."}
+                {type: "tel", name: "phone"}
             ]
         },
         {id: "submit", type: "submit", value: "Редагувати заклад"}
@@ -270,7 +287,13 @@ const formsData = {
             ]
         },
         {type: "textarea", name: "description", placeholder: "Опис...", required: true},
-        {type: "tel", name: "phone", placeholder: "Номери телефону...", required: true},
+        {
+            type: "fieldset",
+            legend: "Номери телефону",
+            fields: [
+                {type: "tel", name: "phone"}
+            ]
+        },
         {type: "url", name: "website_link", placeholder: "Сайт...", required: true},
         {type: "url", name: "map_link", placeholder: "Посилання на Google Maps...", required: true},
         {
@@ -317,14 +340,15 @@ function generateForm(formKey) {
     formContainer.innerHTML = ""; // Clear form
 
     fields.forEach(field => {
-        if ((field.type === "text" || field.type === "number" || field.type === "textarea" || field.type === "tel" || field.type === "url") && field.name !== "photos") {
+        if ((field.type === "text" || field.type === "number" || field.type === "textarea" /*|| field.type === "tel"*/ || field.type === "url") && field.name !== "photos") {
             const input = document.createElement(field.type === "textarea" ? "textarea" : "input");
             input.type = field.type;
             input.name = field.name;
             input.placeholder = field.placeholder;
             if (field.required) input.required = true;
             formContainer.appendChild(input);
-        } else if (field.type === "radio" || field.type === "checkbox") {
+        }
+        else if (field.type === "radio" || field.type === "checkbox") {
             const fieldset = document.createElement("fieldset");
             const legend = document.createElement("legend");
             legend.textContent = field.legend;
@@ -346,6 +370,7 @@ function generateForm(formKey) {
             });
 
             formContainer.appendChild(fieldset);
+
         } else if (field.type === "fieldset") {
             const fieldset = document.createElement("fieldset");
             const legend = document.createElement("legend");
@@ -360,6 +385,8 @@ function generateForm(formKey) {
                     input.placeholder = subField.placeholder;
                     if (subField.required) input.required = true;
                     fieldset.appendChild(input);
+                } else if (subField.type === "tel" && subField.name === "phone") {
+                    fieldset.appendChild(generatePhoneInput());
                 } else if (subField.type === "working-hours") {
                     fieldset.appendChild(generateWorkingHours()); // Функція для розкладу
                 } else if (subField.name === "photos") {
@@ -378,39 +405,7 @@ function generateForm(formKey) {
     });
 }
 
-// function generatePhotoUpload() {
-//     const container = document.createElement("div"); // Основний контейнер
-//     container.classList.add("photo-upload");
-//
-//     const gallery = document.createElement("div");
-//     gallery.classList.add("photo-gallery");
-//
-//     const input = document.createElement("input");
-//     input.type = "text";
-//     input.placeholder = "Вставити наступне фото...";
-//
-//     const button = document.createElement("button");
-//     button.id = "add-photo";
-//     button.textContent = "Додати фото";
-//
-//     button.addEventListener("click", () => {
-//         const photoUrl = input.value.trim();
-//         if (photoUrl) {
-//             const img = document.createElement("img");
-//             img.src = photoUrl;
-//             img.alt = "Зображення";
-//             img.classList.add("photo-thumbnail");
-//             gallery.appendChild(img);
-//             input.value = "";
-//         }
-//     });
-//
-//     container.appendChild(gallery);
-//     container.appendChild(input);
-//     container.appendChild(button);
-//
-//     return container;
-// }
+//photo url convert, close and drag
 function generatePhotoUpload() {
     const container = document.createElement("div");
     container.classList.add("photo-upload");
@@ -419,7 +414,6 @@ function generatePhotoUpload() {
     gallery.classList.add("photo-gallery");
     gallery.id = "photo-gallery";
 
-    // Обгортка для інпуту та кнопки
     const inputContainer = document.createElement("div");
     inputContainer.classList.add("photo-input");
 
@@ -437,7 +431,7 @@ function generatePhotoUpload() {
     inputContainer.appendChild(button);
 
     container.appendChild(gallery);
-    container.appendChild(inputContainer); // Додаємо обгорнуті інпут і кнопку
+    container.appendChild(inputContainer);
 
     let photoArray = [];
 
@@ -449,6 +443,7 @@ function generatePhotoUpload() {
 
         const photoDiv = document.createElement("div");
         photoDiv.classList.add("photo");
+        photoDiv.setAttribute("draggable", "true");
 
         const img = document.createElement("img");
         img.src = url;
@@ -467,6 +462,9 @@ function generatePhotoUpload() {
 
         photoArray.push(url);
         updatePhotoStorage();
+
+        // Додаємо обробники для перетягування
+        addDragAndDrop(photoDiv);
     }
 
     function updatePhotoStorage() {
@@ -500,261 +498,64 @@ function generatePhotoUpload() {
         }
     });
 
+    // --- Логіка для Drag and Drop ---
+    let draggedItem = null;
+
+    function addDragAndDrop(photoDiv) {
+        photoDiv.addEventListener("dragstart", function (event) {
+            draggedItem = photoDiv;
+            event.dataTransfer.effectAllowed = "move";
+            setTimeout(() => {
+                photoDiv.classList.add("dragging");
+            }, 0);
+        });
+
+        photoDiv.addEventListener("dragend", function () {
+            photoDiv.classList.remove("dragging");
+            draggedItem = null;
+            updateArrayOrder();
+        });
+
+        photoDiv.addEventListener("dragover", function (event) {
+            event.preventDefault();
+            event.dataTransfer.dropEffect = "move";
+
+            const draggingOver = event.target.closest(".photo");
+            if (draggingOver && draggingOver !== draggedItem) {
+                const bounding = draggingOver.getBoundingClientRect();
+                const offset = event.clientY - bounding.top;
+                if (offset > bounding.height / 2) {
+                    gallery.insertBefore(draggedItem, draggingOver.nextSibling);
+                } else {
+                    gallery.insertBefore(draggedItem, draggingOver);
+                }
+            }
+        });
+    }
+
+    function updateArrayOrder() {
+        const newOrder = Array.from(gallery.children).map(photoDiv => {
+            return photoDiv.querySelector("img").src;
+        });
+
+        photoArray = newOrder;
+        updatePhotoStorage();
+    }
+
     return container;
 }
 
-// function generatePhotoUpload() {
-//     const container = document.createElement("div");
-//     container.classList.add("photo-upload");
-//
-//     const gallery = document.createElement("div");
-//     gallery.classList.add("photo-gallery");
-//     //gallery.id = "photo-gallery"; // ID для доступу
-//
-//     const input = document.createElement("input");
-//     input.type = "text";
-//     input.placeholder = "Вставити наступне фото...";
-//     input.id = "photo-url"; // ID для доступу
-//
-//     const button = document.createElement("button");
-//     button.type = "button";
-//     button.id = "add-photo";
-//     button.textContent = "Додати фото";
-//
-//     container.appendChild(gallery);
-//     container.appendChild(input);
-//     container.appendChild(button);
-//
-//     let photoArray = []; // Масив для унікальних фото
-//
-//     function addPhoto(url) {
-//         if (photoArray.includes(url)) {
-//             alert("Це фото вже додано!");
-//             return;
-//         }
-//
-//         const photoDiv = document.createElement("div");
-//         photoDiv.classList.add("photo");
-//
-//         const img = document.createElement("img");
-//         img.src = url;
-//         img.alt = "Фото";
-//
-//         const removeDiv = document.createElement("div");
-//         removeDiv.classList.add("remove");
-//         const removeImg = document.createElement("img");
-//         removeImg.src = "./icons/cross.svg";
-//         removeImg.alt = "Видалити";
-//
-//         removeDiv.appendChild(removeImg);
-//         photoDiv.appendChild(img);
-//         photoDiv.appendChild(removeDiv);
-//         gallery.appendChild(photoDiv);
-//
-//         // Додаємо посилання в масив
-//         photoArray.push(url);
-//         updatePhotoStorage();
-//     }
-//
-//     function updatePhotoStorage() {
-//         console.log("Збережені фото:", photoArray.join(",")); // Імітація збереження
-//     }
-//
-//     button.addEventListener("click", function (event) {
-//         event.preventDefault();
-//         const url = input.value.trim();
-//         if (url) {
-//             addPhoto(url);
-//             input.value = "";
-//         }
-//     });
-//
-//     input.addEventListener("keypress", function (event) {
-//         if (event.key === "Enter") {
-//             event.preventDefault();
-//             button.click();
-//         }
-//     });
-//
-//     gallery.addEventListener("click", function (event) {
-//         if (event.target.closest(".remove")) {
-//             const photoDiv = event.target.closest(".photo");
-//             const imgSrc = photoDiv.querySelector("img").src;
-//
-//             photoDiv.remove();
-//             photoArray = photoArray.filter(photo => photo !== imgSrc);
-//             updatePhotoStorage();
-//         }
-//     });
-//
-//     return container;
-// }
-
-// document.addEventListener("DOMContentLoaded", function () {
-//     function generateWorkingHours() {
-//         const days = [
-//             { short: "Mn", full: "Пн" },
-//             { short: "Tu", full: "Вт" },
-//             { short: "We", full: "Ср" },
-//             { short: "Th", full: "Чт" },
-//             { short: "Fr", full: "Пт" },
-//             { short: "St", full: "Сб" },
-//             { short: "Sn", full: "Нд" }
-//         ];
-//
-//         const timeOptions = [];
-//         for (let h = 0; h < 24; h++) {
-//             const hour = String(h).padStart(2, '0');
-//             timeOptions.push(`<option value="${hour}:00">${hour}:00</option>`);
-//             timeOptions.push(`<option value="${hour}:30">${hour}:30</option>`);
-//         }
-//
-//         const fieldset = document.createElement("fieldset");
-//         fieldset.classList.add("custom-field");
-//         fieldset.innerHTML = '<legend class="custom-field-title">Години роботи</legend>';
-//
-//         days.forEach(day => {
-//             const dayDiv = document.createElement("div");
-//             dayDiv.classList.add("day");
-//             dayDiv.dataset.day = day.full;
-//
-//             const checkbox = document.createElement("input");
-//             checkbox.type = "checkbox";
-//             checkbox.id = day.short;
-//             checkbox.checked = true;
-//
-//             const label = document.createElement("label");
-//             label.htmlFor = day.short;
-//             label.textContent = day.full;
-//
-//             const spanStart = document.createElement("span");
-//             spanStart.textContent = "з";
-//             const selectStart = document.createElement("select");
-//             selectStart.classList.add("time-start");
-//             selectStart.innerHTML = timeOptions.join("");
-//             selectStart.value = "08:00";
-//
-//             const spanEnd = document.createElement("span");
-//             spanEnd.textContent = "до";
-//             const selectEnd = document.createElement("select");
-//             selectEnd.classList.add("time-end");
-//             selectEnd.innerHTML = timeOptions.join("");
-//             selectEnd.value = "20:00";
-//
-//             dayDiv.append(checkbox, label, spanStart, selectStart, spanEnd, selectEnd);
-//             fieldset.appendChild(dayDiv);
-//         });
-//
-//         return fieldset;
-//     }
-//
-//     document.body.appendChild(generateWorkingHours());
-// document.addEventListener("DOMContentLoaded", function () {
-//     const days = [
-//         { short: "Mn", full: "Пн" },
-//         { short: "Tu", full: "Вт" },
-//         { short: "We", full: "Ср" },
-//         { short: "Th", full: "Чт" },
-//         { short: "Fr", full: "Пт" },
-//         { short: "St", full: "Сб" },
-//         { short: "Sn", full: "Нд" }
-//     ];
-//
-//     const timeOptions = [];
-//     for (let h = 0; h < 24; h++) {
-//         const hour = String(h).padStart(2, '0');
-//         timeOptions.push(`<option value="${hour}:00">${hour}:00</option>`);
-//         timeOptions.push(`<option value="${hour}:30">${hour}:30</option>`);
-//     }
-//
-//     const container = document.createElement("fieldset");
-//     container.classList.add("custom-field");
-//     container.innerHTML = '<legend class="custom-field-title">Години роботи</legend>';
-//
-//     days.forEach(day => {
-//         const dayDiv = document.createElement("div");
-//         dayDiv.classList.add("day");
-//         dayDiv.dataset.day = day.full;
-//
-//         const checkbox = document.createElement("input");
-//         checkbox.type = "checkbox";
-//         checkbox.id = day.short;
-//         checkbox.checked = true;
-//
-//         const label = document.createElement("label");
-//         label.htmlFor = day.short;
-//         label.textContent = day.full;
-//
-//         const spanStart = document.createElement("span");
-//         spanStart.textContent = "з";
-//         const selectStart = document.createElement("select");
-//         selectStart.classList.add("time-start");
-//         selectStart.innerHTML = timeOptions.join("");
-//         selectStart.value = "08:00";
-//
-//         const spanEnd = document.createElement("span");
-//         spanEnd.textContent = "до";
-//         const selectEnd = document.createElement("select");
-//         selectEnd.classList.add("time-end");
-//         selectEnd.innerHTML = timeOptions.join("");
-//         selectEnd.value = "20:00";
-//
-//         dayDiv.append(checkbox, label, spanStart, selectStart, spanEnd, selectEnd);
-//         container.appendChild(dayDiv);
-//     });
-//
-//     document.body.appendChild(container);
-//
-//     document.getElementById("saveSchedule").addEventListener("click", function () {
-//         const workTime = [];
-//         let rangeStart = null;
-//         let startTime = "";
-//         let endTime = "";
-//
-//         days.forEach((day, index) => {
-//             const checkbox = document.getElementById(day.short);
-//             const start = document.querySelector(`[data-day='${day.full}'] .time-start`).value;
-//             const end = document.querySelector(`[data-day='${day.full}'] .time-end`).value;
-//
-//             if (checkbox.checked) {
-//                 if (!rangeStart) {
-//                     rangeStart = day.short;
-//                     startTime = start;
-//                     endTime = end;
-//                 } else if (startTime === start && endTime === end) {
-//                     // Продовжуємо діапазон
-//                 } else {
-//                     workTime.push(`${rangeStart}-${days[index - 1].short} ${startTime}-${endTime}`);
-//                     rangeStart = day.short;
-//                     startTime = start;
-//                     endTime = end;
-//                 }
-//             } else if (rangeStart) {
-//                 workTime.push(`${rangeStart}-${days[index - 1].short} ${startTime}-${endTime}`);
-//                 rangeStart = null;
-//             }
-//         });
-//
-//         if (rangeStart) {
-//             workTime.push(`${rangeStart}-${days[days.length - 1].short} ${startTime}-${endTime}`);
-//         }
-//
-//         console.log(JSON.stringify({ work_time: workTime }));
-//         // Тут можна додати відправку у БД
-//     });
-// });
-
+//working hours
 function generateWorkingHours() {
     const days = [
-        {short: "Mn", full: "Пн"},
-        {short: "Tu", full: "Вт"},
-        {short: "We", full: "Ср"},
-        {short: "Th", full: "Чт"},
-        {short: "Fr", full: "Пт"},
-        {short: "St", full: "Сб"},
-        {short: "Sn", full: "Нд"}
+        "Пн","Вт","Ср","Чт", "Пт","Сб","Нд"
+    ];
+    const engdays = [
+        "Mn","Tu","Wd","Th", "Fr","St","Sn"
+        //check names in db
     ];
     const container = document.createElement("div");
+    container.classList.add("working-hours");
 
     days.forEach((day, index) => {
         const dayDiv = document.createElement("div");
@@ -763,11 +564,11 @@ function generateWorkingHours() {
 
         const checkbox = document.createElement("input");
         checkbox.type = "checkbox";
-        checkbox.id = `day-${index}`;
+        checkbox.id = engdays[index];
         checkbox.checked = true;
 
         const label = document.createElement("label");
-        label.htmlFor = `day-${index}`;
+        label.htmlFor = engdays[index];
         label.textContent = day;
 
         const spanStart = document.createElement("span");
@@ -800,143 +601,96 @@ function generateTimeSelect() {
     return select;
 }
 
-//
-// function generatePhotoUpload() {
-//     const container = document.createElement("div");
-//
-//     const gallery = document.createElement("div");
-//     gallery.id = "photo-gallery";
-//     gallery.classList.add("photo-gallery");
-//
-//     const uploadDiv = document.createElement("div");
-//     uploadDiv.classList.add("photo-upload");
-//
-//     const input = document.createElement("input");
-//     input.type = "text";
-//     input.id = "photo-url";
-//     input.placeholder = "Вставити наступне фото...";
-//
-//     const button = document.createElement("button");
-//     button.id = "add-photo";
-//     button.textContent = "Додати фото";
-//
-//     button.addEventListener("click", function (event) {
-//         event.preventDefault();
-//         const url = input.value.trim();
-//         if (url) {
-//             const img = document.createElement("img");
-//             img.src = url;
-//             img.alt = "Фото";
-//             img.style.width = "100px";
-//             img.style.height = "100px";
-//             img.style.margin = "5px";
-//             gallery.appendChild(img);
-//             input.value = "";
-//         }
-//     });
-//
-//     uploadDiv.append(input, button);
-//     container.append(gallery, uploadDiv);
-//
-//     return container;
-// }
+//phone numbers
+function generatePhoneInput() {
+    const container = document.createElement("div");
+    container.classList.add("phone-numbers");
 
+    const phoneList = document.createElement("ul");
+    phoneList.classList.add("phone-list");
 
-// document.addEventListener("DOMContentLoaded", function () {
-//     const timeOptions = [];
-//     for (let h = 0; h < 24; h++) {
-//         const hour = String(h).padStart(2, '0');
-//         timeOptions.push(`<option value="${hour}:00">${hour}:00</option>`);
-//         timeOptions.push(`<option value="${hour}:30">${hour}:30</option>`);
-//     }
-//
-//     document.querySelectorAll(".time-start, .time-end").forEach(select => {
-//         if (select) {
-//             select.innerHTML = timeOptions.join("");
-//
-//             // Встановлення значення за замовчуванням
-//             if (select.classList.contains("time-start") && select.querySelector('option[value="08:00"]')) {
-//                 select.value = "08:00";
-//             } else if (select.classList.contains("time-end") && select.querySelector('option[value="20:00"]')) {
-//                 select.value = "20:00";
-//             }
-//         }
-//     });
-// });
-//
-// document.addEventListener("DOMContentLoaded", function () {
-//     const gallery = document.getElementById("photo-gallery");
-//     const input = document.getElementById("photo-url");
-//     const addButton = document.getElementById("add-photo");
-//
-//     let photoArray = []; // Масив для збереження посилань на фото
-//
-//     // Функція для додавання фото
-//     function addPhoto(url) {
-//         if (photoArray.includes(url)) {
-//             alert("Це фото вже додано!");
-//             return;
-//         }
-//
-//         const photoDiv = document.createElement("div");
-//         photoDiv.classList.add("photo");
-//
-//         const img = document.createElement("img");
-//         img.src = url;
-//         img.alt = "Фото";
-//
-//         const removeDiv = document.createElement("div");
-//         removeDiv.classList.add("remove");
-//         const removeImg = document.createElement("img");
-//         removeImg.src = "./icons/cross.svg";
-//         removeImg.alt = "Видалити";
-//
-//         removeDiv.appendChild(removeImg);
-//         photoDiv.appendChild(img);
-//         photoDiv.appendChild(removeDiv);
-//         gallery.appendChild(photoDiv);
-//
-//         // Додаємо посилання в масив
-//         photoArray.push(url);
-//         updatePhotoStorage();
-//     }
-//
-//     // Функція оновлення фото-масиву (імітація збереження в базу)
-//     function updatePhotoStorage() {
-//         console.log("Збережені фото:", photoArray.join(",")); // Імітація збереження
-//     }
-//
-//     // Обробник натискання кнопки "Додати фото"
-//     addButton.addEventListener("click", function (event) {
-//         event.preventDefault(); // Виправлення проблеми скролінгу
-//
-//         const url = input.value.trim();
-//         if (url) {
-//             addPhoto(url);
-//             input.value = "";
-//         }
-//     });
-//
-//     // Обробка натискання Enter у полі вводу
-//     input.addEventListener("keypress", function (event) {
-//         if (event.key === "Enter") {
-//             event.preventDefault(); // Виправлення проблеми скролінгу
-//             addButton.click();
-//         }
-//     });
-//
-//     // Видалення фото через делегування подій
-//     gallery.addEventListener("click", function (event) {
-//         if (event.target.closest(".remove")) {
-//             const photoDiv = event.target.closest(".photo");
-//             const imgSrc = photoDiv.querySelector("img").src;
-//
-//             // Видаляємо з DOM
-//             photoDiv.remove();
-//
-//             // Видаляємо з масиву
-//             photoArray = photoArray.filter(photo => photo !== imgSrc);
-//             updatePhotoStorage();
-//         }
-//     });
-// });
+    const inputContainer = document.createElement("div");
+    inputContainer.classList.add("phone-input");
+
+    const input = document.createElement("input");
+    input.type = "tel";
+    input.placeholder = "+380XXXXXXXXX або 0XXXXXXXXX";
+    input.pattern = "\\+380\\d{9}";
+    input.title = "Введіть номер у форматі +380XXXXXXXXX або 0XXXXXXXXX";
+
+    const button = document.createElement("button");
+    button.type = "button";
+    button.id = "submit";
+    button.textContent = "Додати номер";
+
+    inputContainer.appendChild(input);
+    inputContainer.appendChild(button);
+
+    container.appendChild(phoneList);
+    container.appendChild(inputContainer);
+
+    let phoneArray = [];
+
+    function addPhone(number) {
+        if (phoneArray.includes(number)) {
+            alert("Цей номер вже додано!");
+            return;
+        }
+
+        const listItem = document.createElement("li");
+        listItem.classList.add("phone-item");
+
+        const span = document.createElement("span");
+        span.textContent = number;
+
+        const removeButton = document.createElement("button");
+        removeButton.type = "button";
+        removeButton.id = "remove";
+        removeButton.textContent = "Видалити";
+        //removeButton.classList.add("remove-phone");
+
+        removeButton.addEventListener("click", () => {
+            listItem.remove();
+            phoneArray = phoneArray.filter(phone => phone !== number);
+            updatePhoneStorage();
+        });
+
+        listItem.appendChild(span);
+        listItem.appendChild(removeButton);
+        phoneList.appendChild(listItem);
+
+        phoneArray.push(number);
+        updatePhoneStorage();
+    }
+
+    function updatePhoneStorage() {
+        console.log("Збережені номери:", phoneArray.join(", "));
+    }
+
+    button.addEventListener("click", function (event) {
+        event.preventDefault();
+        let number = input.value.trim();
+
+        // Додаємо +38, якщо його немає на початку
+        if (!number.startsWith("+38")) {
+            number = "+38" + number;
+        }
+
+        const phonePattern = /^\+380\d{9}$/;
+        if (number && phonePattern.test(number)) {
+            addPhone(number);
+            input.value = "";
+        } else {
+            alert("Введіть номер у форматі +380XXXXXXXXX");
+        }
+    });
+
+    input.addEventListener("keypress", function (event) {
+        if (event.key === "Enter") {
+            event.preventDefault();
+            button.click();
+        }
+    });
+
+    return container;
+}
