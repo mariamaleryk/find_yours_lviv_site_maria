@@ -56,6 +56,11 @@ function showSettings(){
 function updateFirstName(){
     document.getElementById('updateFirstNameForm').addEventListener('submit',async (evt)=>{
         evt.preventDefault();
+
+        const submitButton = document.getElementById('updateFirstName');
+        submitButton.setAttribute("disabled", "disabled");
+        submitButton.style.backgroundColor = 'lightgray';
+
         const newFirstName = document.getElementById('newFirstName').value;
 
         const reqBody = new URLSearchParams({
@@ -67,13 +72,14 @@ function updateFirstName(){
             const response = await fetch('http://localhost:8080/api/user/updateFirstName',
                 {
                     credentials: 'include',
-                    method: 'POST',
+                    method: 'PUT',
                     body: reqBody
                 });
 
             if (response.ok){
                 sessionStorage.removeItem("userData");
                 await getUser();
+                return;
             }
 
             const data = await response.json();
@@ -93,11 +99,14 @@ function updateFirstName(){
 
             }
             error.style.display = 'block';
-
+            submitButton.removeAttribute("disabled");
+            submitButton.style.backgroundColor = 'white';
         }catch(err){
             console.log("Виникла помилка під час оновлення імені.");
             error.innerText = 'Виникла помилка під час оновлення імені.';
             error.style.display = 'block';
+            submitButton.removeAttribute("disabled");
+            submitButton.style.backgroundColor = 'white';
         }
     })
 }
@@ -105,6 +114,11 @@ function updateFirstName(){
 function updateLastName(){
     document.getElementById('updateLastNameForm').addEventListener('submit',async (evt)=>{
         evt.preventDefault();
+
+        const submitButton = document.getElementById('updateLastName');
+        submitButton.setAttribute("disabled", "disabled");
+        submitButton.style.backgroundColor = 'lightgray';
+
         const newLastName = document.getElementById('newLastName').value;
 
         const reqBody = new URLSearchParams({
@@ -116,7 +130,7 @@ function updateLastName(){
             const response = await fetch('http://localhost:8080/api/user/updateLastName',
                 {
                     credentials: 'include',
-                    method: 'POST',
+                    method: 'PUT',
                     body: reqBody
                 });
 
@@ -142,41 +156,52 @@ function updateLastName(){
 
             }
             error.style.display = 'block';
-
+            submitButton.removeAttribute("disabled");
+            submitButton.style.backgroundColor = 'white';
         }catch(err){
             console.log("Виникла помилка під час оновлення імені.");
             error.innerText = 'Виникла помилка під час оновлення прізвища.';
             error.style.display = 'block';
+            submitButton.removeAttribute("disabled");
+            submitButton.style.backgroundColor = 'white';
         }
     })
 }
 
 function deleteProfile(){
-    document.getElementById('deleteProfile').addEventListener('click',async ()=>{
+    document.getElementById('deleteProfile').addEventListener('click',async function () {
+        this.setAttribute('disabled', 'disabled');
+        this.style.backgroundColor = 'lightgray';
         const confirm = prompt("Введіть \"ПІДТВЕРДЖУЮ\", якщо Ви справді бажаєте видалити свій профіль!");
         const error = document.getElementById('error');
 
-        if (confirm==='ПІДТВЕРДЖУЮ'){
+        if (confirm === 'ПІДТВЕРДЖУЮ') {
             try {
                 const response = await fetch('http://localhost:8080/api/user/deleteProfile',
                     {
-                        method: 'POST',
+                        method: 'PUT',
                         credentials: 'include'
                     });
 
-                if (response.ok){
+                if (response.ok) {
                     sessionStorage.setItem("isLoggedIn", JSON.stringify(false));
                     sessionStorage.removeItem("expiresAt");
                     sessionStorage.removeItem("userData");
                     window.location.href = '../index.html';
+                    return;
                 }
-            }catch (err){
+            } catch (err) {
                 console.log("Виникла помилка під час оновлення імені.");
                 error.innerText = 'Виникла помилка під час оновлення прізвища.';
                 error.style.display = 'block';
+                this.removeAttribute("disabled");
+                this.style.backgroundColor = 'white';
             }
+        }else{
+            this.removeAttribute("disabled");
+            this.style.backgroundColor = 'white';
+            return;
         }
-        return;
     });
 }
 

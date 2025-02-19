@@ -96,6 +96,10 @@
     cursor: pointer;
   }
 
+  .active:empty{
+    display: none;
+  }
+
   ul li a:hover {
     text-shadow: 1px 1px 3px black;
   }
