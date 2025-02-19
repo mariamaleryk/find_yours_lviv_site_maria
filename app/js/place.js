@@ -14,12 +14,13 @@ document.addEventListener('DOMContentLoaded', function () {
     h1.id = "name";
     h1.textContent = place.place_name;
 
-    const h5 = document.createElement("h5");
-    h5.className = "place";
-    h5.textContent = place.district;
-
-    name_and_district.prepend(h5);
     name_and_district.prepend(h1);
+
+    const districtName = document.getElementById("districtName");
+    districtName.textContent = place.district;
+
+    const districtImg = document.getElementById("districtImg");
+    districtImg.src = districtIcons[place.district];
 
     const type = document.getElementById("place-type");
     type.textContent = place.type_name;
@@ -58,12 +59,24 @@ document.addEventListener('DOMContentLoaded', function () {
     phone.innerHTML = place.phone ? place.phone.join(', ') : 'немає';
 
     const link = document.getElementById('link');
-    link.target = "_blank";
-    link.href = place.website_link;
-    link.textContent = place.website_link || "немає";
+    if (place.website_link){
+        link.href = place.website_link;
+        link.textContent = place.website_link;
+    }else{
+        link.textContent = "Сайт відсутній";
+    }
 
     const photos = document.querySelector(".scroller");
     photos.innerHTML = place.photos && place.photos.slice(1).map(photo => `<img src="${photo}" alt="${place.place_name}">`).join('') || '';
 
     updateScrollerClasses('.scroller');
 })
+
+const districtIcons = {
+    'Франківський': "../../icons/districts/frankivskiy.svg",
+    'Центр міста': "../../icons/districts/centre.svg",
+    'Сихівський': "../../icons/districts/syhivskiy.svg",
+    'Шевченківський': "../../icons/districts/shevchenkivskiy.svg",
+    'Личаківський': "../../icons/districts/lychakivskiy.svg",
+    'Залізничний': "../../icons/districts/zaliznychniy.svg"
+};
