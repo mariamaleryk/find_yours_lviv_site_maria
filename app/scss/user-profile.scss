@@ -107,3 +107,7 @@ h1 {
   color: red;
   display: none;
 }
+
+*:disabled {
+  cursor: not-allowed;
+}

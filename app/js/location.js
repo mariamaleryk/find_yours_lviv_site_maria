@@ -30,8 +30,12 @@ document.addEventListener("DOMContentLoaded", function () {
     district.appendChild(span);
 
     const link = document.getElementById("link");
-    link.href = locationPage.website_link;
-    link.textContent = locationPage.website_link || 'немає';
+    if(locationPage.website_link){
+        link.href = locationPage.website_link;
+        link.textContent = locationPage.website_link;
+    }else{
+        link.textContent = 'Сайт відсутній';
+    }
 
     const description = document.getElementById("description");
     description.textContent = locationPage.description || 'немає';

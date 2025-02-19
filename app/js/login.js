@@ -98,6 +98,9 @@ function loginValidation() {
     document.getElementById("loginForm").addEventListener('submit', async (event) => {
         event.preventDefault();
 
+        const submitButton = document.getElementById('loginSubmit');
+        submitButton.setAttribute("disabled", "disabled");
+
         const email = document.getElementById('loginEmail').value;
         const password = document.getElementById('loginPassword').value;
         const error= document.getElementById('error');
@@ -118,17 +121,20 @@ function loginValidation() {
 
             if(response.ok) {
                 window.location.href = 'user-profile.html';
+                return;
             }
 
             if (response.status === 401) {
                 error.innerText = 'Невірний логін або пароль.';
                 error.style.display = 'block';
+                submitButton.removeAttribute("disabled");
             }
 
         } catch (err) {
             console.error('Login error:', err);
             error.innerText = 'Виникла помилка під час обробки даних';
             error.style.display = 'block';
+            submitButton.removeAttribute("disabled");
         }
     })
 }
@@ -136,6 +142,10 @@ function loginValidation() {
 function registerValidation() {
     document.getElementById('registrationForm').addEventListener('submit', async function (event) {
         event.preventDefault();
+
+        const submitButton = document.getElementById('registerSubmit');
+        submitButton.setAttribute("disabled", "disabled");
+
         const password = document.getElementById('password').value;
         const confirmPassword = document.getElementById('confirmPassword').value;
         const error = document.getElementById('registerError');
@@ -147,6 +157,7 @@ function registerValidation() {
             error.innerText = 'Паролі не збігаються.';
             error.style.display = 'block';
             event.preventDefault();
+            submitButton.removeAttribute("disabled");
             return;
         }
 
@@ -155,6 +166,7 @@ function registerValidation() {
             error.innerText = 'Пароль повинен мати довжину не менше 8 символів, містити принаймні одну цифру та один спеціальний символ.';
             error.style.display = 'block';
             event.preventDefault();
+            submitButton.removeAttribute("disabled");
             return;
         }
 
@@ -178,6 +190,7 @@ function registerValidation() {
 
             if(response.ok){
                 window.location.href = 'login.html';
+                return;
             }
 
             const data = await response.json();
@@ -195,10 +208,12 @@ function registerValidation() {
                     break;
             }
             error.style.display = 'block';
+            submitButton.removeAttribute("disabled");
         } catch (err) {
             console.error('Register error:', err);
             error.innerText = 'Виникла помилка під час обробки даних.';
             error.style.display = 'block';
+            submitButton.removeAttribute("disabled");
         }
     });
 }

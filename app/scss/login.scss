@@ -133,20 +133,6 @@
   }
 }
 
-.message {
-  display: none;
-  margin: 0;
-  font-size: 12px;
-}
-
-.invalid {
-  color: red;
-}
-
-.valid {
-  color: green;
-}
-
 .error {
   color: red;
   display: none;
@@ -180,7 +166,6 @@ button, input[type="submit"] {
   -webkit-user-select: none;
   -ms-user-select: none;
   -webkit-appearance: none;
-  //background-color: #f2f2f2;
   background-color: rgba(217, 217, 217, 0.9);
   background-image: none;
   border: none;
@@ -281,4 +266,8 @@ button, input[type="submit"] {
 .gsi-material-button:not(:disabled):hover .gsi-material-button-state {
   background-color: #001d35;
   opacity: 8%;
+}
+
+*:disabled {
+  cursor: not-allowed !important;
 }
