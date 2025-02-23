@@ -1,0 +1,43 @@
+@media (min-width: 0px) and (max-width: 959px) {
+  footer .footer-icon {
+    object-fit: cover;
+    //width: fit-content;
+    height: 40vw;
+
+  }
+  .left-part-footer {
+    display: none;
+  }
+  footer .center-part-footer .nav-title-footer, footer .right-part-footer .nav-title-footer {
+    font-size: 5vw;
+    letter-spacing: 1vw;
+    margin: 3vh 0;
+  }
+  footer .center-part-footer .nav-bottom, footer .right-part-footer .nav-bottom, .nav-bottom-mob {
+    font-size: 3.5vw !important;
+    text-align: left;
+    letter-spacing: 0.4vw;
+    margin-bottom: 2vw;
+  }
+
+  footer .footer-rect2 {
+    padding: 0 0 10vw 0;
+  }
+
+
+  .team {
+    margin-top: 5vw;
+    display: flex;
+    white-space: nowrap;
+    //text-align: center;
+    justify-content: space-between;
+
+    h6 {
+      font-size: 4.5vw;
+      // font-family: "Dela Gothic One", sans-serif;
+      font-family: 'Montserrat Alternates', sans-serif;
+      font-weight: normal;
+    }
+  }
+
+}

@@ -15,9 +15,9 @@ const newer = require('gulp-newer');
 // Minify SCSS
 gulp.task('minify-scss', () => {
     return src('app/scss/*.scss')
-        .pipe(newer({
-            dest: 'dist/css',
-            ext: '.min.css'}))
+        // .pipe(newer({
+        //     dest: 'dist/css',
+        //     ext: '.min.css'}))
         .pipe(sass().on('error', sass.logError))
         .pipe(postcss([cssnano(), autoprefixer()]))
         .pipe(rename({suffix: '.min'}))

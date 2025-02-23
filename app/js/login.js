@@ -8,6 +8,7 @@ async function updateLoginState() {
     }
 
     const button = document.getElementById("login-btn");
+    const footerProfileButton = document.getElementById('footerProfileButton');
 
     function handleClick() {
         if(isLoggedIn){
@@ -32,9 +33,15 @@ async function updateLoginState() {
         } else {
             button.innerText = 'Вийти';
         }
+        footerProfileButton.addEventListener('click', ()=>{
+            window.location.href = '../html/user-profile.html';
+        });
     } else {
         if (!document.URL.includes('login.html')) {
             button.innerText = 'Увійти';
+            footerProfileButton.addEventListener('click', ()=>{
+                window.location.href = '../html/login.html';
+            });
         } else {
             button.remove();
             googleAuth();
@@ -42,6 +49,7 @@ async function updateLoginState() {
             loginValidation();
         }
     }
+
 }
 
 async function isLogged() {
@@ -90,6 +98,9 @@ function loginValidation() {
     document.getElementById("loginForm").addEventListener('submit', async (event) => {
         event.preventDefault();
 
+        const submitButton = document.getElementById('loginSubmit');
+        submitButton.setAttribute("disabled", "disabled");
+
         const email = document.getElementById('loginEmail').value;
         const password = document.getElementById('loginPassword').value;
         const error= document.getElementById('error');
@@ -110,17 +121,20 @@ function loginValidation() {
 
             if(response.ok) {
                 window.location.href = 'user-profile.html';
+                return;
             }
 
             if (response.status === 401) {
                 error.innerText = 'Невірний логін або пароль.';
                 error.style.display = 'block';
+                submitButton.removeAttribute("disabled");
             }
 
         } catch (err) {
             console.error('Login error:', err);
             error.innerText = 'Виникла помилка під час обробки даних';
             error.style.display = 'block';
+            submitButton.removeAttribute("disabled");
         }
     })
 }
@@ -128,6 +142,10 @@ function loginValidation() {
 function registerValidation() {
     document.getElementById('registrationForm').addEventListener('submit', async function (event) {
         event.preventDefault();
+
+        const submitButton = document.getElementById('registerSubmit');
+        submitButton.setAttribute("disabled", "disabled");
+
         const password = document.getElementById('password').value;
         const confirmPassword = document.getElementById('confirmPassword').value;
         const error = document.getElementById('registerError');
@@ -139,6 +157,7 @@ function registerValidation() {
             error.innerText = 'Паролі не збігаються.';
             error.style.display = 'block';
             event.preventDefault();
+            submitButton.removeAttribute("disabled");
             return;
         }
 
@@ -147,6 +166,7 @@ function registerValidation() {
             error.innerText = 'Пароль повинен мати довжину не менше 8 символів, містити принаймні одну цифру та один спеціальний символ.';
             error.style.display = 'block';
             event.preventDefault();
+            submitButton.removeAttribute("disabled");
             return;
         }
 
@@ -157,8 +177,8 @@ function registerValidation() {
         const reqBody = new URLSearchParams({
             "email": email,
             "password": password,
-            "firstName": firstname,
-            "lastName": lastname
+            "firstName": firstname.trim(),
+            "lastName": lastname.trim()
         });
 
         try {
@@ -170,6 +190,7 @@ function registerValidation() {
 
             if(response.ok){
                 window.location.href = 'login.html';
+                return;
             }
 
             const data = await response.json();
@@ -183,14 +204,16 @@ function registerValidation() {
                     error.innerText = 'Такий користувач уже існує.';
                     break;
                 case 3:
-                    error.innerText = 'Довжина імені та прізвища немає перевищувати 25 символів';
+                    error.innerText = 'Довжина імені та прізвища немає перевищувати 25 символів.';
                     break;
             }
             error.style.display = 'block';
+            submitButton.removeAttribute("disabled");
         } catch (err) {
             console.error('Register error:', err);
-            error.innerText = 'Виникла помилка під час обробки даних';
+            error.innerText = 'Виникла помилка під час обробки даних.';
             error.style.display = 'block';
+            submitButton.removeAttribute("disabled");
         }
     });
 }

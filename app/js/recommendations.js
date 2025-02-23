@@ -21,7 +21,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     let params = sessionStorage.getItem("paramsList");
     params = JSON.parse(params);
-    params = Object.values(params);
+    console.log(params);
 
     if (!recommendations || !params) {
         const container = document.getElementById('recommendations');
@@ -173,68 +173,104 @@ function displayChosenParams(params, type) {
 }
 
 function displayTypes(params, container) {
-    let types = params[0];
-    types = types.map(type => `${typeNames[type]}`);
+    let types = params["types_to_sort"];
+    if (!types)
+        return;
 
     const ms = document.createElement('p');
     ms.innerHTML = '<b>Тип закладу:';
     container.appendChild(ms);
 
-    types.forEach((type) => {
+    if (Object.keys(params).length === 1){
+        types = typeNames[types];
         const p = document.createElement('p');
-        p.innerText = type;
+        p.innerText = types;
         container.appendChild(p);
-    })
+    }else{
+        types = types.map(type => `${typeNames[type]}`);
+        types.forEach((type) => {
+            const p = document.createElement('p');
+            p.innerText = type;
+            container.appendChild(p);
+        })
+    }
 }
 
 function displayDistricts(params, container) {
-    const districts = params[1];
+    const districts = params["districts_to_sort"];
+    if (!districts)
+        return;
 
     const ms = document.createElement('p');
     ms.innerHTML = '<b>Район:';
     container.appendChild(ms);
 
-
-    districts.forEach((district) => {
+    if(Object.keys(params).length === 1){
         const p = document.createElement('p');
-        p.innerText = district.charAt(0).toUpperCase() + district.slice(1);
+        p.innerText = districts.charAt(0).toUpperCase() + districts.slice(1);
         container.appendChild(p);
-    })
+    }else{
+        districts.forEach((district) => {
+            const p = document.createElement('p');
+            p.innerText = district.charAt(0).toUpperCase() + district.slice(1);
+            container.appendChild(p);
+        })
+    }
 }
 
 function displayPurposes(params, container) {
-    let purposes = params[2];
-    purposes = purposes.map(p => `${purposeNames[p]}`);
+    let purposes = params["purposes_to_sort"];
+    if(!purposes)
+        return;
 
     const ms = document.createElement('p');
     ms.innerHTML = '<b>Мета візиту:';
     container.appendChild(ms);
 
-
-    purposes.forEach((purpose) => {
+    if (Object.keys(params).length === 1){
+        purposes = purposeNames[purposes];
         const p = document.createElement('p');
-        p.innerText = purpose;
+        p.innerText = purposes;
         container.appendChild(p);
-    })
+    }else {
+        purposes = purposes.map(p => `${purposeNames[p]}`);
+        purposes.forEach((purpose) => {
+            const p = document.createElement('p');
+            p.innerText = purpose;
+            container.appendChild(p);
+        })
+    }
 }
 
 function displayCuisines(params, container) {
-    let cuisines = params[3];
-    cuisines = cuisines.map(c => `${cuisineNames[c]}`)
+    let cuisines = params['cuisines_to_sort'];
+    if (!cuisines)
+        return;
 
     const ms = document.createElement('p');
     ms.innerHTML = '<b>Кухня:';
     container.appendChild(ms);
 
-    cuisines.forEach((cuisine) => {
+    if (Object.keys(params).length === 1){
+        cuisines = cuisineNames[cuisines];
         const p = document.createElement('p');
-        p.innerText = cuisine;
+        p.innerText = cuisines;
         container.appendChild(p);
-    })
+    }else{
+        cuisines = cuisines.map(c => `${cuisineNames[c]}`);
+        cuisines.forEach((cuisine) => {
+            const p = document.createElement('p');
+            p.innerText = cuisine;
+            container.appendChild(p);
+        })
+    }
 }
 
 function displayPetFriendly(params, container) {
-    const pet = params[4];
+    const pet = params['pet_friendly'];
+    if(!pet)
+        return;
+
     const ms = document.createElement('p');
     ms.innerHTML = '<b>Пет-френдлі:';
     container.appendChild(ms);
@@ -244,15 +280,25 @@ function displayPetFriendly(params, container) {
 }
 
 function displayBudgets(params, container) {
-    const budgets = params[5];
+    const budgets = params['budgets_to_sort'];
+    if (!budgets)
+        return;
+
     const ms = document.createElement('p');
     ms.innerHTML = '<b>Бюджет:';
     container.appendChild(ms);
-    budgets.forEach((budget) => {
+
+    if (Object.keys(params).length === 1){
         const p = document.createElement('p');
-        p.innerText = budget;
+        p.innerText = budgets;
         container.appendChild(p);
-    })
+    }else{
+        budgets.forEach((budget) => {
+            const p = document.createElement('p');
+            p.innerText = budget;
+            container.appendChild(p);
+        })
+    }
 }
 
 $(document).ready(function () {

@@ -35,17 +35,6 @@ h1 {
   }
 }
 
-.password-field {
-  display: flex;
-  align-items: center;
-
-  img {
-    height: 3vw;
-    cursor: pointer;
-    margin-left: 15vw;
-  }
-}
-
 .repeating-text {
   display: flex;
   justify-content: center;
@@ -73,4 +62,52 @@ h1 {
 .log-out{
   height: 50px;
   margin: 5vw 0 5vw 10vw;
+}
+
+.settings{
+  display: none;
+  .column{
+    gap: 1vw;
+  }
+  h1{
+    margin: 2vw 0 3vw 10vw;
+  }
+  button, input[type="submit"]{
+    @include mixins.font-montserrat-medium;
+    font-size: 1.5vw;
+    border-radius: 2vw;
+    margin-top: 1.5vw;
+    background: white;
+    padding: 0.6vw;
+    border: 0.2vw solid #575757;
+    max-width: 17vw;
+  }
+  button:hover{
+    text-shadow: 1px 1px 3px #575757;
+  }
+  input{
+    width: 20vw;
+    border-radius: 1.5vw;
+    border: 0.2vw solid #575757;
+    padding: 1vw;
+    margin-right: 3vw;
+  }
+}
+
+.settings-button{
+  background:none;
+  border:none;
+  margin: 2vw 0 0 10vw;
+  img{
+    height: 5vw;
+  }
+}
+
+.error {
+  color: red;
+  display: none;
+}
+
+*:disabled {
+  cursor: not-allowed;
 }

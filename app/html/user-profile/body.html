@@ -8,6 +8,31 @@
         </div>
     </div>
 
+    <button class="settings-button" id="settingsButton">
+        <img src="../../icons/settings.svg" alt="Налаштування профілю"></button>
+
+    <section id="profileSettings" class="settings">
+        <h1>Налаштування профілю</h1>
+
+        <div class="info">
+            <div class="column">
+                <form id="updateFirstNameForm">
+                    <input type="text" placeholder="Введіть нове ім'я" id="newFirstName" required autocomplete="off">
+                    <input type="submit" id="updateFirstName" value="Змінити Ім'я">
+                </form>
+
+                <form id="updateLastNameForm">
+                    <input type="text" placeholder="Введіть нове прізвище" id="newLastName" required autocomplete="off">
+                    <input type="submit" id="updateLastName" value="Змінити Прізвище">
+                </form>
+
+                <div id="error" class="error"></div>
+                <button id="deleteProfile">Видалити профіль</button>
+            </div>
+        </div>
+
+    </section>
+
     <div class="repeating-text">
         <span class="outline">ВПОДОБАНІВПОДОБАНІВПОДОБАНІ</span>
         <span class="filled">ВПОДОБАНІ</span>
@@ -150,4 +175,6 @@
             </div>
         </div>
     </div>
+
+
 </div>

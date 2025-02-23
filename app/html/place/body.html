@@ -1,22 +1,59 @@
 <div class="container-fluid">
     <!-- секція з фотографією лініями і назвою закладу-->
-    <section>
-        <div class="top-line">
-            <div class="row">
-                <div class="col-4 photo-rest" id="main_photo"></div>
-                <div class="col-1"></div>
-                <div class="col-7 name-rest" id="n&d"></div>
-                <!--тут ше має бути кнопка але я хз як її реалізувати (саме шоб воно якось заносилось в базу)-->
+    <div class="line-photo">
+        <section>
+            <div class="top-line ">
+                <div class="row">
+                    <div class="col-sm-12 col-md-12 col-lg-5 col-xl-5  photo-rest" id="main_photo">
+                        <div class="like-icon">
+                            <svg width="33" height="29" viewBox="0 0 33 29" fill="none"
+                                 xmlns="http://www.w3.org/2000/svg">
+                                <path d="M10 0.5H22.0544C27.3011 0.5 31.5544 4.75329 31.5544 10V19C31.5544 24.2467 27.3011 28.5 22.0544 28.5H9.99999C4.75329 28.5 0.5 24.2467 0.5 19V10C0.5 4.7533 4.7533 0.5 10 0.5Z"
+                                      fill="#D9D9D9" fill-opacity="0.1" stroke="white"/>
+                                <path d="M15.9196 8.66861L16.2721 9.01901L16.6246 8.66861C16.6775 8.61602 16.7314 8.56534 16.7862 8.51656C18.8727 6.65921 22.4103 7.47909 23.623 9.9253C24.2132 11.1156 24.2747 12.751 23.2096 14.7358C22.1622 16.6874 20.0285 18.9633 16.2721 21.4052C12.5158 18.9633 10.382 16.6875 9.33465 14.7358C8.26951 12.751 8.33106 11.1156 8.92118 9.92531C10.134 7.4791 13.6715 6.65921 15.758 8.51655C15.8128 8.56533 15.8667 8.61601 15.9196 8.66861Z"
+                                      stroke="white"/>
+                            </svg>
+                        </div>
+                    </div>
+                    <!-- назва локації та закладу-->
+                    <div class="col-11 mx-auto  col-sm-10 col-md-10 col-lg-6 col-xl-6 name-rest" id="n&d">
+                        <div class="info-item">
+                            <img src="" alt="district" class="icon" id="districtImg"/>
+                            <h5 class="place" id="districtName"></h5>
+                        </div>
+                        <div class="my-row" id="tags"></div>
+                    </div>
+                </div>
             </div>
-            <div class="find-more">
-                <img src="../../icons/find-more.jpg" alt="">
+
+        </section>
+        <div class=" d-flex like-block flex-column align-items-end">
+            <div class="like-section">
+                <div class="like-title">Додати до улюблених</div>
+                <div class="like-icon">
+                    <svg width="33" height="29" viewBox="0 0 33 29" fill="none"
+                         xmlns="http://www.w3.org/2000/svg">
+                        <path d="M10 0.5H22.0544C27.3011 0.5 31.5544 4.75329 31.5544 10V19C31.5544 24.2467 27.3011 28.5 22.0544 28.5H9.99999C4.75329 28.5 0.5 24.2467 0.5 19V10C0.5 4.7533 4.7533 0.5 10 0.5Z"
+                              fill="#D9D9D9" fill-opacity="0.1" stroke="white"/>
+                        <path d="M15.9196 8.66861L16.2721 9.01901L16.6246 8.66861C16.6775 8.61602 16.7314 8.56534 16.7862 8.51656C18.8727 6.65921 22.4103 7.47909 23.623 9.9253C24.2132 11.1156 24.2747 12.751 23.2096 14.7358C22.1622 16.6874 20.0285 18.9633 16.2721 21.4052C12.5158 18.9633 10.382 16.6875 9.33465 14.7358C8.26951 12.751 8.33106 11.1156 8.92118 9.92531C10.134 7.4791 13.6715 6.65921 15.758 8.51655C15.8128 8.56533 15.8667 8.61601 15.9196 8.66861Z"
+                              stroke="white"/>
+                    </svg>
+                </div>
+            </div>
+            <p>*yлюблені заклади доступні в профілі</p>
+        </div>
+        <div class="find-more">
+            <div class="repeating-text">
+                <span class="outline-black">AД &nbsp;</span>
+                <span class="filled-black"> ДІЗНАЙСЯ БІЛЬШЕ ПРО ЗАКЛАД &nbsp;</span>
+                <span class="outline-black"> ДІЗНАЙСЯ БІЛЬШЕ &nbsp; ПРО ЗАКЛАД</span>
             </div>
         </div>
-    </section>
+    </div>
     <!--секція з інформацією про заклад в 6-ти прямокутниках  -->
     <section>
-        <div class="row g-5">
-            <div class="rect-full col-12 col-xs-4 col-sm-4 col-md-4 col-lg-4 col-xl-4 col-xxl-4">
+        <div class="row rects">
+            <div class="rect-full col-4 col-sm-4 col-md-4 col-lg-3 col-xl-3 col-xxl-3">
                 <div>
                     <div class="icon">
                         <img src="../../icons/place/meal-1.svg" class="icons" alt="meal">
@@ -27,7 +64,7 @@
                     </div>
                 </div>
             </div>
-            <div class="rect col-12 col-xs-4 col-sm-4 col-md-4 col-lg-4 col-xl-4 col-xxl-4">
+            <div class="rect col-4 col-sm-4 col-md-4 col-lg-3 col-xl-3 col-xxl-3">
                 <div>
                     <div class="icon">
                         <img src="../../icons/place/pet.svg" class="icons" alt="pet">
@@ -38,7 +75,7 @@
                     </div>
                 </div>
             </div>
-            <div class="rect-full col-xs-4 col-sm-4 col-md-4 col-lg-4 col-xl-4 col-xxl-4">
+            <div class="rect-full col-4 col-sm-4 col-md-4 col-lg-3 col-xl-3 col-xxl-3">
                 <div>
                     <div class="icon">
                         <img src="../../icons/place/clock-1.svg" class="icons" alt="clock">
@@ -49,10 +86,8 @@
                     </div>
                 </div>
             </div>
-        </div>
-        <!-- Другий рядок -->
-        <div class="row g-5">
-            <div class="rect col-12 col-xs-4 col-sm-4 col-md-4 col-lg-4 col-xl-4 col-xxl-4">
+            <!-- Другий рядок -->
+            <div class="rect col-4 col-sm-4 col-md-4 col-lg-3 col-xl-3 col-xxl-3">
                 <div>
                     <div class="icon">
                         <img src="../../icons/place/chef.svg" class="icons" alt="chef">
@@ -63,7 +98,7 @@
                     </div>
                 </div>
             </div>
-            <div class="rect-full col-12 col-xs-4 col-sm-4 col-md-4 col-lg-4 col-xl-4 col-xxl-4">
+            <div class="rect-full col-4 col-sm-4 col-md-4 col-lg-3 col-xl-3 col-xxl-3">
                 <div>
                     <div class="icon">
                         <img src="../../icons/place/wallet.svg" class="icons" alt="wallet">
@@ -74,7 +109,7 @@
                     </div>
                 </div>
             </div>
-            <div class="rect col-12 col-xs-4 col-sm-4 col-md-4 col-lg-4 col-xl-4 col-xxl-4">
+            <div class="rect col-4 col-4 col-sm-4 col-md-4 col-lg-3 col-xl-3 col-xxl-3">
                 <div>
                     <div class="icon">
                         <img src="../../icons/place/geo-alt-fill.svg" class="icons" alt="geolocation">
@@ -91,20 +126,19 @@
         <!--  опис закладу i зв'язок  -->
         <section>
             <div class="row">
-                <div class="col-12 mx-auto col-sm-10 col-md-10 col-lg-10 col-xl-10 col-xxl-10">
+                <div class="col-11 mx-auto col-sm-11 col-md-11 col-lg-10 col-xl-10 col-xxl-10">
                     <h6 class="rest-description"></h6>
                 </div>
                 <div class="row">
-                    <div class="rest-contact p-0 mx-auto d-flex col-12 col-sm-10 col-md-10 col-lg-10 col-xl-10 col-xxl-10"
-                         style="justify-content: space-between">
-                        <div class="col-5 connect">
+                    <div class="rest-contact p-0 mx-auto d-flex col-11 col-sm-11 col-md-11 col-lg-10 col-xl-10 col-xxl-10">
+                        <div class="col-10 col-lg-5 col-xl-5 col-xxl-5 connect">
                             <h5 class="connect-1">Зв’язок із закладом</h5>
                             <a href=""></a>
                         </div>
-                        <div class="col-6 connect text-end link">
+                        <div class="col-10 col-lg-6 col-xl-6 col-xxl-6  link">
                             <h5 class="connect-1">Детальніше про заклад</h5>
                             <span>
-                                <a class="text-end test" href="" target="_blank"></a>
+                                <a class="text-end" id="link" target="_blank"></a>
                             </span>
                         </div>
                     </div>

@@ -2,6 +2,7 @@
   width: 11vw;
   height: 5vw;
 }
+
 .navbar {
   background: linear-gradient(to right, #000000, #465F3C);
   width: 100%;
@@ -9,48 +10,61 @@
   position: fixed;
   gap: 3vw;
   padding: 1vw 2vw;
-  overflow: hidden;
+  overflow: hidden !important;
   z-index: 1000;
-  //display: flex;
-  .search-bar {
+  .search-block {
+    align-items: center;
     display: flex;
-    border: 3px solid #fff;
-    border-radius: 50px;
-    width: 20vw;
-    height: 10vw;
-    max-height: 3rem;
-    //height:100%;
-    background: rgba(217, 217, 217, 0.2);
-    justify-content: center;
-    padding: 0 1vw 0 1vw;
-    input:focus {
-      //outline: none; /* Прибирає стандартний контур при фокусуванні */
-      color: white; /* Колір тексту під час введення */
-    }
-    input {
-      background: transparent;
-      //flex: 1;
-      width: 100%;
-      height: 100%;
-      border: none;
-      outline: none;
-    }
-    button {
-      border: none;
-      background: transparent; /* Щоб кнопка не мала фону */
-      padding: 0;
-      cursor: pointer;
-    }
-    button img {
-      width: 2vw;
-      color: #fff;
-      //line-height: 0;
+    margin-right: 2vw;
+    flex-wrap: wrap;
+    align-content: center;
+
+    .search-bar {
+      display: flex;
+      border: 0.3vw solid #fff;
+      border-radius: 50em;
+      width: 20vw;
+      height: 10vw;
+      max-height: 4vw;
+      background: rgba(217, 217, 217, 0.2);
+      justify-content: center;
+      padding: 0 1vw 0 1vw;
+
+      input:focus {
+        //outline: none; /* Прибирає стандартний контур при фокусуванні */
+        color: white; /* Колір тексту під час введення */
+      }
+
+      input {
+        font-family: "Montserrat Alternates", sans-serif;
+        font-size: 1.3vw;
+        background: transparent;
+        width: 100%;
+        height: 100%;
+        border: none;
+        outline: none;
+      }
+
+      button {
+        border: none;
+        background: transparent; /* Щоб кнопка не мала фону */
+        padding: 0;
+        cursor: pointer;
+      }
+
+      button img {
+        width: 2vw;
+        color: #fff;
+        //line-height: 0;
+      }
     }
   }
+
   ::placeholder {
     font-family: 'Montserrat Alternates', sans-serif;
     font-size: 1.3vw;
   }
+
   ul {
     white-space: nowrap;
     gap: 8vw;
@@ -58,10 +72,11 @@
     list-style-type: none;
     display: flex;
     color: white;
-    padding: 0;
-    justify-content: center;
+    justify-content: space-between;
     margin: 0;
+    align-items: center;
   }
+
   ul li a {
     color: white;
     text-decoration: none;
@@ -69,16 +84,43 @@
     font-size: 1.3vw;
     font-weight: 600;
   }
+
   .active {
     border-radius: 60px/60px;
     color: #000;
     padding: 1vw 1.5vw;
     background-color: white;
   }
+
   .active:hover {
     cursor: pointer;
   }
+
+  .active:empty{
+    display: none;
+  }
+
   ul li a:hover {
     text-shadow: 1px 1px 3px black;
+  }
+}
+
+@media (max-width: 959px) {
+  .header-tablap {
+    display: none;
+  }
+}
+
+@media (min-width: 960px)  {
+  .header-tablap {
+    display: flex;
+    flex-direction: row ! important;
+    width: 100%;
+  }
+  .header-mobile {
+    display: none;
+  }
+  .search-bar{
+
   }
 }
