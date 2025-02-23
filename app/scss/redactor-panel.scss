@@ -69,6 +69,8 @@ body {
     fieldset {
       background-color: #F8F8F8;
       padding: 1vw;
+      margin: 0.5vw 0;
+      width: 100%;
       border-radius: 2vw;
       box-shadow: inset 0.1vw 0.1vw 0.1vw rgba(0, 0, 0, 0.2);
       border: none;
@@ -76,16 +78,12 @@ body {
       @include mixins.font-montserrat-regular;
     }
 
-    input[type="radio"],
-    input[type="checkbox"] {
-      display: none;
-    }
-
     fieldset {
       padding: 2vw;
+      margin: 1vw 0;
       display: flex;
       flex-wrap: wrap;
-      gap: 2vw;
+      gap: 1vw;
       align-items: center;
     }
 
@@ -96,14 +94,17 @@ body {
     }
 
     label {
-      //font-size: 1.2vw;
       cursor: pointer;
       display: flex;
       align-items: center;
       gap: 0.5vw;
       white-space: nowrap;
       width: 20vw;
+    }
 
+    input[type="radio"],
+    input[type="checkbox"] {
+      display: none;
     }
 
     label::before {
@@ -114,6 +115,7 @@ body {
       background-repeat: no-repeat;
       background-position: center;
       display: inline-block;
+
     }
 
     input[type="checkbox"] + label::before {
@@ -209,7 +211,7 @@ body {
     align-items: center;
 
     input {
-      width: 70%;
+      width: 400%;
       margin: 0 1vw 0 0;
     }
   }
@@ -230,8 +232,8 @@ body {
     }
   }
 
-  #add-photo,
-  #submit {
+  button[type="button"],
+  button[type="submit"] {
     @include mixins.font-montserrat-regular;
     background: #4c7839;
     color: white;
@@ -239,6 +241,7 @@ body {
     padding: 0.5vw 1vw;
     border-radius: 2vw;
     cursor: pointer;
+    width: 100%;
   }
 
   #remove {
@@ -252,13 +255,4 @@ body {
     cursor: pointer;
   }
 
-
-}
-
-.form-content {
-  display: none;
-}
-
-.form-content.active {
-  display: block;
 }
