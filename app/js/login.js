@@ -206,6 +206,12 @@ function registerValidation() {
                 case 3:
                     error.innerText = 'Довжина імені та прізвища немає перевищувати 25 символів.';
                     break;
+                case 4:
+                    error.innerText = 'Заборонено використовувати тимчасові емейли.'
+                    break;
+                default:
+                    error.innerText = data.message;
+                    break;
             }
             error.style.display = 'block';
             submitButton.removeAttribute("disabled");
