@@ -1,0 +1,258 @@
+@use "mixins";
+
+body {
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+  height: 100%;
+  width: 100%;
+  scroll-behavior: smooth;
+}
+
+.container-fluid {
+  padding: 7vw 0 0 0;
+  margin: 0;
+  background-image: url("../icons/top-line.svg");
+  background-repeat: no-repeat;
+  background-size: 50vw auto;
+  background-position: top 3vw right -3vw;
+  width: 100%;
+}
+
+.editor-panel {
+  h1 {
+    @include mixins.font-montserrat-alternates-regular;
+    margin: 6vw 10vw;
+  }
+
+  .tabs {
+    display: flex;
+    gap: 0.5vw;
+    margin: 0 10vw;
+
+    .tab {
+      background: #fff;
+      border: 0.16vw solid black;
+      border-bottom: none;
+      padding: 1.5vw;
+      border-radius: 2vw 2vw 0 0;
+      @include mixins.font-montserrat-small;
+      font-weight: 500;
+      cursor: pointer;
+      transition: 0.3s;
+
+      &.active {
+        background: #4c7839;
+        color: white;
+        font-weight: 600;
+      }
+
+      &:hover {
+        background: rgba(76, 120, 57, 0.60);
+        color: white;
+      }
+    }
+  }
+
+  form {
+    border: 0.16vw solid black;
+    border-radius: 0 2vw 2vw 2vw;
+    padding: 3vw;
+    margin: 0 10vw;
+    display: flex;
+    flex-direction: column;
+    gap: 1vw;
+    box-shadow: inset 0.1vw 0.1vw 0.1vw rgba(0, 0, 0, 0.1);
+
+    input,
+    textarea,
+    fieldset {
+      background-color: #F8F8F8;
+      padding: 1vw;
+      margin: 0.5vw 0;
+      width: 100%;
+      border-radius: 2vw;
+      box-shadow: inset 0.1vw 0.1vw 0.1vw rgba(0, 0, 0, 0.2);
+      border: none;
+      outline: none;
+      @include mixins.font-montserrat-regular;
+    }
+
+    fieldset {
+      padding: 2vw;
+      margin: 1vw 0;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1vw;
+      align-items: center;
+    }
+
+    legend {
+      @include mixins.font-montserrat-regular;
+      //font-weight: 500;
+      margin-bottom: 0.5vw;
+    }
+
+    label {
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 0.5vw;
+      white-space: nowrap;
+      width: 20vw;
+    }
+
+    input[type="radio"],
+    input[type="checkbox"] {
+      display: none;
+    }
+
+    label::before {
+      content: "";
+      width: 1.5vw;
+      height: 1.5vw;
+      background-size: contain;
+      background-repeat: no-repeat;
+      background-position: center;
+      display: inline-block;
+
+    }
+
+    input[type="checkbox"] + label::before {
+      background-image: url("../icons/redactor-panel/checkbox-unchecked.svg");
+    }
+
+    input[type="checkbox"]:checked + label::before {
+      background-image: url("../icons/redactor-panel/checkbox-checked.svg");
+    }
+
+    input[type="radio"] + label::before {
+      background-image: url("../icons/redactor-panel/radio-unchecked.svg");
+    }
+
+    input[type="radio"]:checked + label::before {
+      background-image: url("../icons/redactor-panel/radio-checked.svg");
+    }
+
+    .day {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      //width: 40vw;
+      padding: 0.5vw;
+      //padding: 0.8vw 0;
+
+      label {
+        width: 5vw;
+      }
+
+      select {
+        padding: 0.5vw;
+        border: 0.1vw solid #ccc;
+        border-radius: 0.5vw;
+        background: #fff;
+        cursor: pointer;
+        @include mixins.font-montserrat-regular;
+        margin: 0 0.5vw;
+      }
+    }
+  }
+
+  .photo-gallery {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1vw;
+    //justify-content: center;
+  }
+
+  .photo {
+    position: relative;
+    border-radius: 1vw;
+    overflow: hidden;
+    width: 15vw;
+    height: 12vw;
+    flex-shrink: 0;
+    margin: 0 0 2vw 0;
+
+  }
+
+
+  .photo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 1vw;
+  }
+
+  .remove {
+    position: absolute;
+    top: 0.5vw;
+    right: 0.5vw;
+    width: 2vw;
+    height: 2vw;
+    cursor: pointer;
+  }
+
+  .photo-upload,
+  .phone-numbers {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+
+
+  }
+
+  .photo-input,
+  .phone-input {
+    width: 100%;
+    display: flex;
+    align-items: center;
+
+    input {
+      width: 400%;
+      margin: 0 1vw 0 0;
+    }
+  }
+
+  .phone-list {
+    display: flex;
+    flex-direction: column;
+    justify-content: left;
+    width: 100%;
+    padding: 0 2vw;
+
+    .phone-item {
+      margin: 0.5vw;
+
+      .span {
+        padding: 0.5vw;
+      }
+    }
+  }
+
+  button[type="button"],
+  button[type="submit"] {
+    @include mixins.font-montserrat-regular;
+    background: #4c7839;
+    color: white;
+    border: none;
+    padding: 0.5vw 1vw;
+    border-radius: 2vw;
+    cursor: pointer;
+    width: 100%;
+  }
+
+  #remove {
+    @include mixins.font-montserrat-regular;
+    background: transparent;
+    color: black;
+    border: 0.15vw solid black;
+    padding: 0.2vw 1vw;
+    margin: 0 0.5vw;
+    border-radius: 2vw;
+    cursor: pointer;
+  }
+
+}

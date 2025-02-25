@@ -1,0 +1,381 @@
+<div class="container-fluid">
+    <div class="editor-panel">
+        <h1>Панель редактора</h1>
+        <div class="tabs">
+            <button class="tab active" data-form="add-place">Додати заклад</button>
+            <button class="tab" data-form="add-location">Додати локацію</button>
+            <button class="tab" data-form="edit-place">Редагувати заклад</button>
+            <button class="tab" data-form="edit-location">Редагувати локацію</button>
+        </div>
+        <form id="add-place" class="form-content" style="display: block">
+            <input type="text" name="place_name" placeholder="Назва..." required>
+            <input type="text" name="address" placeholder="Адреса..." required>
+
+            <fieldset>
+                <legend>Район</legend>
+                <input type="radio" id="center" name="district" value="Центр міста">
+                <label for="center"> Центр міста</label>
+
+                <input type="radio" id="sikhiv" name="district" value="Сихівський">
+                <label for="sikhiv"> Сихівський </label>
+
+                <input type="radio" id="shevchenkiv" name="district" value="Шевченківський">
+                <label for="shevchenkiv">Шевченківський</label>
+
+                <input type="radio" id="frankivsk" name="district" value="Франківський">
+                <label for="frankivsk">Франківський</label>
+
+                <input type="radio" id="lychakiv" name="district" value="Личаківський">
+                <label for="lychakiv"> Личаківський</label>
+
+                <input type="radio" id="zalyznychnyi" name="district" value="Залізничний">
+                <label for="zalyznychnyi"> Залізничний</label>
+            </fieldset>
+
+            <fieldset>
+                <legend>Пет-френдлі?</legend>
+                <input type="radio" id="pet_friendly_yes" name="pet_friendly" value="true">
+                <label for="pet_friendly_yes">Так</label>
+
+                <input type="radio" id="pet_friendly_no" name="pet_friendly" value="false">
+                <label for="pet_friendly_no">Ні</label>
+            </fieldset>
+
+            <fieldset>
+                <legend>Кухня</legend>
+                <input type="checkbox" id="ukrainian" name="cuisine_ids" value="1">
+                <label for="ukrainian">Українська</label>
+
+                <input type="checkbox" id="european" name="cuisine_ids" value="2">
+                <label for="european">Європейська</label>
+
+                <input type="checkbox" id="asian" name="cuisine_ids" value="3">
+                <label for="asian">Азійська</label>
+
+                <input type="checkbox" id="american" name="cuisine_ids" value="4">
+                <label for="american">Американська</label>
+
+                <input type="checkbox" id="georgian" name="cuisine_ids" value="5">
+                <label for="georgian">Грузинська</label>
+
+                <input type="checkbox" id="italian" name="cuisine_ids" value="6">
+                <label for="italian">Італійська</label>
+            </fieldset>
+
+            <fieldset>
+                <legend>Тип закладу</legend>
+                <input type="radio" id="restaurant" name="type_id" value="1">
+                <label for="restaurant">Ресторан</label>
+
+                <input type="radio" id="cafe" name="type_id" value="2">
+                <label for="cafe">Кав’ярня</label>
+
+                <input type="radio" id="steakhouse" name="type_id" value="3">
+                <label for="steakhouse">Стейк-хаус</label>
+
+                <input type="radio" id="fastfood" name="type_id" value="4">
+                <label for="fastfood">Фаст-фуд</label>
+
+                <input type="radio" id="bar" name="type_id" value="5">
+                <label for="bar">Бар</label>
+
+                <input type="radio" id="pizzeria" name="type_id" value="6">
+                <label for="pizzeria">Піцерія</label>
+            </fieldset>
+
+            <fieldset>
+                <legend>Бюджет</legend>
+                <input type="radio" id="low_budget" name="budget" value="Мінімальний">
+                <label for="low_budget">Мінімальний</label>
+
+                <input type="radio" id="mid_budget" name="budget" value="Середній">
+                <label for="mid_budget">Середній</label>
+
+                <input type="radio" id="high_budget" name="budget" value="Преміум">
+                <label for="high_budget">Преміум</label>
+            </fieldset>
+
+            <fieldset>
+                <legend>Мета візиту</legend>
+                <input type="checkbox" id="banquet" name="purpose_ids" value="1">
+                <label for="banquet">Банкет</label>
+
+                <input type="checkbox" id="date" name="purpose_ids" value="3">
+                <label for="date">Побачення</label>
+
+                <input type="checkbox" id="friends_meeting" name="purpose_ids" value="5">
+                <label for="friends_meeting">Зустріч з друзями</label>
+
+                <input type="checkbox" id="hearty_meal" name="purpose_ids" value="4">
+                <label for="hearty_meal">Ситно поїсти</label>
+
+                <input type="checkbox" id="family_rest" name="purpose_ids" value="2">
+                <label for="family_rest">Сімейний відпочинок</label>
+            </fieldset>
+
+            <textarea name="description" placeholder="Опис..." required></textarea>
+
+            <fieldset>
+                <legend>Номери телефону</legend>
+                <div class="phone-numbers">
+                    <ul class="phone-list"></ul>
+                    <div class="phone-input"><input type="tel" placeholder="+380XXXXXXXXX або 0XXXXXXXXX"
+                                                    pattern="\+380\d{9}"
+                                                    title="Введіть номер у форматі +380XXXXXXXXX або 0XXXXXXXXX">
+                        <button type="button">Додати номер</button>
+                    </div>
+                </div>
+            </fieldset>
+            <input type="url" name="website_link" placeholder="Сайт..." required>
+            <input type="url" name="map_link" placeholder="Посилання на Google Maps..." required>
+
+            <fieldset>
+                <legend>Координати</legend>
+                <input type="number" name="latitude" placeholder="Широта..." required min="-90" max="90"
+                       step="0.000001">
+                <input type="number" name="longitude" placeholder="Довгота..." required min="-180" max="180"
+                       step="0.000001">
+            </fieldset>
+
+            <fieldset>
+                <legend>Години роботи</legend>
+                <div class="working-hours">
+                    <div class="day" data-day="Пн">
+                        <input type="checkbox" id="place-day-mon" value="Mn" checked>
+                        <label for="place-day-mon">Пн</label>
+                        <span>з</span>
+                        <select class="time-start"></select>
+                        <span>до</span>
+                        <select class="time-end"></select>
+                    </div>
+                    <div class="day" data-day="Вт">
+                        <input type="checkbox" id="place-day-tue" value="Tu" checked>
+                        <label for="place-day-tue">Вт</label>
+                        <span>з</span>
+                        <select class="time-start"></select>
+                        <span>до</span>
+                        <select class="time-end"></select>
+                    </div>
+                    <div class="day" data-day="Ср">
+                        <input type="checkbox" id="place-day-wed" value="Wd" checked>
+                        <label for="place-day-wed">Ср</label>
+                        <span>з</span>
+                        <select class="time-start"></select>
+                        <span>до</span>
+                        <select class="time-end"></select>
+                    </div>
+                    <div class="day" data-day="Чт">
+                        <input type="checkbox" id="place-day-thu" value="Th" checked>
+                        <label for="place-day-thu">Чт</label>
+                        <span>з</span>
+                        <select class="time-start"></select>
+                        <span>до</span>
+                        <select class="time-end"></select>
+                    </div>
+                    <div class="day" data-day="Пт">
+                        <input type="checkbox" id="place-day-fri" value="Fr" checked>
+                        <label for="place-day-fri">Пт</label>
+                        <span>з</span>
+                        <select class="time-start"></select>
+                        <span>до</span>
+                        <select class="time-end"></select>
+                    </div>
+                    <div class="day" data-day="Сб">
+                        <input type="checkbox" id="place-day-sat" value="St" checked>
+                        <label for="place-day-sat">Сб</label>
+                        <span>з</span>
+                        <select class="time-start"></select>
+                        <span>до</span>
+                        <select class="time-end"></select>
+                    </div>
+                    <div class="day" data-day="Нд">
+                        <input type="checkbox" id="place-day-sun" value="Sn" checked>
+                        <label for="place-day-sun">Нд</label>
+                        <span>з</span>
+                        <select class="time-start"></select>
+                        <span>до</span>
+                        <select class="time-end"></select>
+                    </div>
+                </div>
+            </fieldset>
+
+            <fieldset>
+                <legend>Фото</legend>
+                <div class="photo-upload">
+                    <div class="photo-gallery"></div>
+                    <div class="photo-input">
+                        <input type="text" placeholder="Вставити наступне фото...">
+                        <button type="button">Додати фото</button>
+                    </div>
+                </div>
+            </fieldset>
+
+            <button type="submit">Додати заклад</button>
+        </form>
+
+        <form id="add-location" class="form-content" style="display: none">
+            <input type="text" name="place_name" placeholder="Назва..." required>
+            <input type="text" name="address" placeholder="Адреса..." required>
+
+            <fieldset>
+                <legend>Район</legend>
+                <input type="radio" id="center_location" name="district" value="Центр міста">
+                <label for="center_location"> Центр міста</label>
+
+                <input type="radio" id="sikhiv_location" name="district" value="Сихівський">
+                <label for="sikhiv_location"> Сихівський </label>
+
+                <input type="radio" id="shevchenkiv_location" name="district" value="Шевченківський">
+                <label for="shevchenkiv_location">Шевченківський</label>
+
+                <input type="radio" id="frankivsk_location" name="district" value="Франківський">
+                <label for="frankivsk_location">Франківський</label>
+
+                <input type="radio" id="lychakiv_location" name="district" value="Личаківський">
+                <label for="lychakiv_location"> Личаківський</label>
+
+                <input type="radio" id="zalyznychnyi_location" name="district" value="Залізничний">
+                <label for="zalyznychnyi_location"> Залізничний</label>
+            </fieldset>
+
+            <fieldset>
+                <legend>Тип локації</legend>
+                <input type="radio" id="type_id_7" name="type_id" value="7">
+                <label for="type_id_7">Парк</label>
+                <input type="radio" id="type_id_12" name="type_id" value="12">
+                <label for="type_id_12">Церква/Собор</label>
+                <input type="radio" id="type_id_8" name="type_id" value="8">
+                <label for="type_id_8">Театр</label>
+                <input type="radio" id="type_id_13" name="type_id" value="13">
+                <label for="type_id_13">Музей</label>
+                <input type="radio" id="type_id_9" name="type_id" value="9">
+                <label for="type_id_9">Галерея</label>
+                <input type="radio" id="type_id_11" name="type_id" value="11">
+                <label for="type_id_11">Кінотеатр</label>
+                <input type="radio" id="type_id_14" name="type_id" value="14">
+                <label for="type_id_14">Інше</label>
+                <input type="radio" id="type_id_10" name="type_id" value="10">
+                <label for="type_id_10">Пам'ятка архітектури</label>
+            </fieldset>
+
+            <fieldset>
+                <legend>Тип відпочинку</legend>
+                <input type="checkbox" id="purpose_ids_6" name="purpose_ids" value="6">
+                <label for="purpose_ids_6">Активний</label>
+                <input type="checkbox" id="purpose_ids_7" name="purpose_ids" value="7">
+                <label for="purpose_ids_7">Пасивний</label>
+                <input type="checkbox" id="purpose_ids_9" name="purpose_ids" value="9">
+                <label for="purpose_ids_9" >Розважальний</label>
+                <input type="checkbox" id="purpose_ids_8" name="purpose_ids" value="8">
+                <label for="purpose_ids_8">Культурний</label>
+                <input type="checkbox" id="purpose_ids_2" name="purpose_ids" value="2">
+                <label for="purpose_ids_2">Сімейний</label>
+            </fieldset>
+
+            <textarea name="description" placeholder="Опис..." required></textarea>
+
+            <fieldset>
+                <legend>Номери телефону</legend>
+                <div class="phone-numbers">
+                    <ul class="phone-list"></ul>
+                    <div class="phone-input"><input type="tel" placeholder="+380XXXXXXXXX або 0XXXXXXXXX"
+                                                    pattern="\+380\d{9}"
+                                                    title="Введіть номер у форматі +380XXXXXXXXX або 0XXXXXXXXX">
+                        <button type="button">Додати номер</button>
+                    </div>
+                </div>
+            </fieldset>
+
+            <input type="url" name="website_link" placeholder="Сайт..." required>
+            <input type="url" name="map_link" placeholder="Посилання на Google Maps..." required>
+
+            <fieldset>
+                <legend>Координати</legend>
+                <input type="number" name="latitude" placeholder="Широта..." required min="-90" max="90"
+                       step="0.000001">
+                <input type="number" name="longitude" placeholder="Довгота..." required min="-180" max="180"
+                       step="0.000001">
+            </fieldset>
+
+            <fieldset>
+                <legend>Години роботи</legend>
+                <div class="working-hours">
+                    <div class="day" data-day="Пн">
+                        <input type="checkbox" id="location-day-mon" value="Mn">
+                        <label for="location-day-mon">Пн</label>
+                        <span>з</span>
+                        <select class="time-start"></select>
+                        <span>до</span>
+                        <select class="time-end"></select>
+                    </div>
+                    <div class="day" data-day="Вт">
+                        <input type="checkbox" id="location-day-tue" value="Tu">
+                        <label for="location-day-tue">Вт</label>
+                        <span>з</span>
+                        <select class="time-start"></select>
+                        <span>до</span>
+                        <select class="time-end"></select>
+                    </div>
+                    <div class="day" data-day="Ср">
+                        <input type="checkbox" id="location-day-wed" value="Wd">
+                        <label for="location-day-wed">Ср</label>
+                        <span>з</span>
+                        <select class="time-start"></select>
+                        <span>до</span>
+                        <select class="time-end"></select>
+                    </div>
+                    <div class="day" data-day="Чт">
+                        <input type="checkbox" id="location-day-thu" value="Th">
+                        <label for="location-day-thu">Чт</label>
+                        <span>з</span>
+                        <select class="time-start"></select>
+                        <span>до</span>
+                        <select class="time-end"></select>
+                    </div>
+                    <div class="day" data-day="Пт">
+                        <input type="checkbox" id="location-day-fri" value="Fr">
+                        <label for="location-day-fri">Пт</label>
+                        <span>з</span>
+                        <select class="time-start"></select>
+                        <span>до</span>
+                        <select class="time-end"></select>
+                    </div>
+                    <div class="day" data-day="Сб">
+                        <input type="checkbox" id="location-day-sat" value="St">
+                        <label for="location-day-sat">Сб</label>
+                        <span>з</span>
+                        <select class="time-start"></select>
+                        <span>до</span>
+                        <select class="time-end"></select>
+                    </div>
+                    <div class="day" data-day="Нд">
+                        <input type="checkbox" id="location-day-sun" value="Sn">
+                        <label for="location-day-sun">Нд</label>
+                        <span>з</span>
+                        <select class="time-start"></select>
+                        <span>до</span>
+                        <select class="time-end"></select>
+                    </div>
+                </div>
+            </fieldset>
+
+            <fieldset>
+                <legend>Фото</legend>
+                <div class="photo-upload">
+                    <div class="photo-gallery"></div>
+                    <div class="photo-input">
+                        <input type="text" placeholder="Вставити наступне фото...">
+                        <button type="button">Додати фото</button>
+                    </div>
+                </div>
+            </fieldset>
+            <button type="submit">Додати локацію</button>
+        </form>
+        <form id="edit-place" class="form-content" style="display: none">
+
+        </form>
+        <form id="edit-location" class="form-content" style="display: none">
+
+        </form>
+    </div>
+</div>
