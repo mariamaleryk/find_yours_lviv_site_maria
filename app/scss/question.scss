@@ -3,10 +3,10 @@
 body {
   margin: 0;
   padding: 0;
-  overflow-x: hidden; /* Відключає прокрутку на всій сторінці */
+  overflow-x: hidden;
   height: 100%;
   width: 100%;
-  scroll-behavior: smooth;
+  //scroll-behavior: smooth;
 }
 
 .container-fluid {
@@ -79,7 +79,7 @@ body {
   box-shadow: 0 0 1vw rgb(0, 0, 0, 0.25);
 }
 
-.option.selected{
+.option.selected {
   background-color: #4C7839;
   color: #fff;
   transition: transform 0.3s ease;
@@ -109,16 +109,79 @@ body {
   justify-content: space-between;
   gap: 2vw;
   width: 60vw;
+  z-index: 1000;
 }
 
-span{
+span {
   flex-grow: 1;
   height: 0.4vw;
-  background-color: rgb(0, 0, 0, 30%);
+  background-color: #0000004D;
   border-radius: 0.2vw;
   transition: background-color 0.3s ease-in-out;
+
 }
 
 span.complete {
   background-color: #4c7839; /* Заповнена частина */
+}
+
+@media (min-width: 0px) and (max-width: 991px) {
+
+  .container-fluid {
+    height: 200%;
+    padding: 15vw 0 0 0;
+    background-size: 150vw 70vw;
+    background-position: top 146vw right;
+  }
+
+  .nav-buttons {
+    margin: 8vw 3vw;
+  }
+
+  .nav-button {
+    font-size: 3vw;
+    width: 25vw;
+    border-radius: 5vw;
+  }
+
+  .question h1 {
+    font-size: 6vw;
+    height: 20vw;
+    padding: 0 5vw;
+  }
+
+  .options {
+    gap: 5vw;
+    margin: 10vw 3vw;
+    padding: 6vw 0;
+    height: 85vw;
+  }
+
+  .option {
+    height: 20vw;
+    width: 40vw;
+    font-size: 4vw;
+    border-radius: 6vw;
+  }
+
+  span {
+    height: 1.5vw;
+    border-radius: 2vw;
+  }
+
+  .arrows {
+    padding: 16vw 2vw 20vw 2vw;
+    margin: 0;
+  }
+
+  .arrow-button {
+    height: 15vw;
+    width: 15vw;
+    border-radius: 5vw;
+  }
+
+  .arrow-button svg {
+    height: 15vw;
+    width: 8vw;
+  }
 }

@@ -15,3 +15,20 @@ leftArrow.addEventListener('click', () => {
 rightArrow.addEventListener('click', () => {
     scroller.scrollBy({ left: scrollAmount, behavior: 'smooth' });
 });
+
+document.addEventListener("DOMContentLoaded", () => {
+    const scroller = document.querySelector(".scroller");
+    const container = document.querySelector(".container-fluid");
+
+    if (scroller && container) {
+        const updateBackgroundPosition = () => {
+            const scrollerRect = scroller.getBoundingClientRect();
+            const scrollerCenter = scrollerRect.top + window.scrollY - (window.innerWidth * 0.25);
+            container.style.backgroundPosition = `center ${scrollerCenter}px`;
+        };
+
+        updateBackgroundPosition();
+        window.addEventListener("resize", updateBackgroundPosition);
+        window.addEventListener("scroll", updateBackgroundPosition);
+    }
+});
