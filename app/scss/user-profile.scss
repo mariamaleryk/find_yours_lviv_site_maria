@@ -103,6 +103,15 @@ h1 {
   }
 }
 
+.redactor-button{
+  background:none;
+  border:none;
+  margin-left: 1.6vw;
+  img{
+    height: 4vw;
+  }
+}
+
 .error {
   color: red;
   display: none;

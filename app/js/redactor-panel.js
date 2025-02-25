@@ -1,3 +1,24 @@
+function checkLoginAndRole(){
+    if(!JSON.parse(sessionStorage.getItem("isLoggedIn"))) {
+        return window.location.href = "http://localhost:3000";
+    }
+
+    let userData = sessionStorage.getItem("userData");
+    userData = JSON.parse(userData);
+
+    if(userData.role !== ROLES.REDACTOR){
+        return window.location.href = "http://localhost:3000";
+    }
+}
+
+const ROLES = {
+    USER: 1,
+    REDACTOR: 2,
+    ADMIN: 3
+}
+
+checkLoginAndRole();
+
 document.addEventListener("DOMContentLoaded", function () {
     const tabs = document.querySelectorAll(".tab");
     const forms = document.querySelectorAll(".form-content");
