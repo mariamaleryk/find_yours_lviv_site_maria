@@ -1,4 +1,12 @@
 async function getUser() {
+
+    if(!JSON.parse(sessionStorage.getItem("isLoggedIn"))) {
+        const isLoggedIn = await isLogged();
+        if(!isLoggedIn) {
+            return window.location.href = "http://localhost:3000";
+        }
+    }
+
     let userData = sessionStorage.getItem("userData");
 
     if (userData) {
@@ -18,10 +26,8 @@ async function getUser() {
             sessionStorage.setItem("userData", JSON.stringify(data));
             sessionStorage.setItem("isLoggedIn", JSON.stringify(true));
             sessionStorage.setItem("expiresAt", JSON.stringify(expiresAt));
-            renderUser(data);
+            location.reload();
         }
-
-        location.reload();
     }catch(err) {
         console.error('Error while fetching user data:', err);
     }
@@ -36,21 +42,36 @@ function renderUser(user){
 
     const lastNameContainer = document.getElementById('lastName');
     lastNameContainer.innerHTML = user.lastname;
+
+    if(user.role === ROLES.REDACTOR){
+        const container = document.querySelector('#settingsButton');
+        const button = document.createElement('button');
+        const img = document.createElement('img');
+        img.src = "../../icons/redactorButton.svg";
+        button.className = 'redactor-button';
+        button.id = 'redactorButton';
+        button.appendChild(img);
+        container.parentElement.insertBefore(button, container.nextSibling);
+        openRedactorPanel(button, user.role);
+    }
+}
+
+function openRedactorPanel(button, userRole){
+    button.addEventListener('click', (e) => {
+        if(userRole === ROLES.REDACTOR){
+            window.location.href = '../html/redactor-panel.html';
+        }else{
+            alert("Немає доступу до сторінки редактора");
+            return;
+        }
+    });
 }
 
 function showSettings(){
-    const settingsButton = document.getElementById('settingsButton');
-    const profileSettings = document.getElementById('profileSettings');
-    settingsButton.addEventListener('click', e => {
-        document.getElementById('error').style.display = 'none';
-        const profileSettingsState = profileSettings.style.display;
-
-        if(profileSettingsState === 'block'){
-            profileSettings.style.display = 'none';
-        }else{
-            profileSettings.style.display = 'block';
-        }
-    })
+    $("#settingsButton").click(function () {
+        $content = $("#profileSettings");
+        $content.slideToggle(400);
+    });
 }
 
 function updateFirstName(){
@@ -209,6 +230,12 @@ function handleProfileUpdate() {
     updateFirstName();
     updateLastName();
     deleteProfile();
+}
+
+const ROLES = {
+    USER: 1,
+    REDACTOR: 2,
+    ADMIN: 3
 }
 
 getUser();

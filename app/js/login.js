@@ -7,7 +7,8 @@ async function updateLoginState() {
         isLoggedIn = await isLogged();
     }
 
-    const button = document.getElementById("login-btn");
+    const loginButtonPC = document.getElementById("loginButtonPC");
+    const loginButtonMobile = document.getElementById("loginButtonMobile");
     const footerProfileButton = document.getElementById('footerProfileButton');
 
     function handleClick() {
@@ -24,26 +25,32 @@ async function updateLoginState() {
         }
     }
 
-    button.removeEventListener('click', handleClick);
-    button.addEventListener("click", handleClick);
+    loginButtonPC.removeEventListener('click', handleClick);
+    loginButtonMobile.removeEventListener('click', handleClick);
+    loginButtonPC.addEventListener("click", handleClick);
+    loginButtonMobile.addEventListener("click", handleClick);
 
     if (isLoggedIn) {
         if (!document.URL.includes("user-profile.html")) {
-            button.innerText = 'Профіль';
+            loginButtonPC.innerText = 'Профіль';
+            loginButtonMobile.innerText = 'Профіль';
         } else {
-            button.innerText = 'Вийти';
+            loginButtonPC.innerText = 'Вийти';
+            loginButtonMobile.innerText = 'Вийти';
         }
         footerProfileButton.addEventListener('click', ()=>{
             window.location.href = '../html/user-profile.html';
         });
     } else {
         if (!document.URL.includes('login.html')) {
-            button.innerText = 'Увійти';
+            loginButtonPC.innerText = 'Увійти';
+            loginButtonMobile.innerText = 'Увійти';
             footerProfileButton.addEventListener('click', ()=>{
                 window.location.href = '../html/login.html';
             });
         } else {
-            button.remove();
+            loginButtonPC.remove();
+            loginButtonMobile.remove();
             googleAuth();
             registerValidation();
             loginValidation();
@@ -120,6 +127,7 @@ function loginValidation() {
             });
 
             if(response.ok) {
+                sessionStorage.setItem("isLoggedIn", JSON.stringify(true));
                 window.location.href = 'user-profile.html';
                 return;
             }
